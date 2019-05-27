@@ -1,0 +1,374 @@
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[oneside]{book}%[a4paper]{book}%article%[oneside]{book}
+
+% LaTeX-Zusatzpakete
+\usepackage{german}                % deutsches Dokument (Trennung etc.)
+\usepackage[utf8]{inputenc}      % deutsche Eingabezeichen (äü etc. erlaubt)
+\usepackage{times}                 % Times Font
+\usepackage{graphicx}              % Grafiken einbinden (hängt von latex/dvipdf oder pdflatex ab!)
+\usepackage{tabularx}              % erweiterte Tabellenmöglichkeiten
+\usepackage{subfig}                % Teilgrafiken erlauben
+\usepackage{amsfonts}              % fuer zusätzliche math. Symbole
+\usepackage{amssymb}               % weitere math. Symbole
+\usepackage{theorem}               % Theorem-Umgebung
+\usepackage{listings}              % Programmlistings
+\usepackage{xcolor}		%for coloring
+\usepackage{float}			%for placing images between text/paragraphs
+% Steuerung fuer Programmlistings (anpassen an Programmiersprache)
+\lstset{language=C, frame=single, breaklines=true, tabsize=2}
+
+
+%###############################################################################
+% Grössenangaben zum Dokument etc.
+
+%verlinktes inhaltsverzeichnis
+\usepackage[colorlinks,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+citecolor = black]{hyperref}
+
+
+% vertikal
+\setlength{\voffset}{-0.5cm}
+\setlength{\textheight}{23cm}
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{6mm}
+\setlength{\headsep}{1cm}
+\setlength{\topskip}{0cm}
+\setlength{\footskip}{1cm}
+
+% horizontal
+\setlength{\hoffset}{-0.4cm}
+\setlength{\textwidth}{15.5cm}
+\setlength{\oddsidemargin}{0.8cm}
+\setlength{\evensidemargin}{0.8cm}
+
+\setlength{\parindent}{0cm}        % kein Einzug bei Paragrafenbeginn
+
+
+%###############################################################################
+% Hier geht es los
+
+% Autor und Abgabedatum ändern
+\def\autor{}
+\def\datum{}
+
+% Titelseite erzeugen
+\begin{document}
+
+%###############################################################################
+% Titelseite
+
+\sloppy
+\pagestyle{headings}
+\bibliographystyle{alphadin}
+\pagenumbering{roman}
+
+\begin{titlepage}
+ \renewcommand{\baselinestretch}{1.4}\normalsize
+  
+  \vspace{5cm}
+  \begin{center}
+    
+    \begin{Huge}\textbf{Griechisch App}\end{Huge}\\
+    \vspace{0.8cm}
+    \begin{huge}\textbf{Learnings}\end{huge}\\
+    
+%    \vspace{2.2cm}
+%    \renewcommand{\baselinestretch}{1.2}\normalsize
+%    \begin{huge}
+%      \textbf{Thema der Arbeit\\}
+%    \end{huge}
+%    \renewcommand{\baselinestretch}{1.5}\normalsize
+%    \vspace{0.7cm}
+    \vspace{0.6cm}
+    
+    \begin{Large}\textbf{von \autor\ \\}
+    \end{Large}
+  \end{center}
+\end{titlepage}
+
+
+
+\chapter{Progressive Web App}
+\subsection{•}
+
+
+%###############################################################################
+% Inhaltsverzeichnis
+
+\tableofcontents           % Inhaltsverzeichnis generieren
+\cleardoublepage
+\pagenumbering{arabic}
+
+
+%###############################################################################
+% Literaturverzeichnis und ggfs. Index
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliography{literatur}
+
+% soweit gewünscht: Tabellen- und Abbildungsverzeichnis
+\cleardoublepage
+\listoftables              % Tabellenverzeichnis
+\cleardoublepage
+\listoffigures             % Abbildungsverzeichnis
+
+
+%###############################################################################
+% Appendix (falls nötig)
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Anhang}
+\begin{appendix}           % Anhang
+
+\chapter{Code snippets}
+
+\begin{enumerate}
+ 
+ \item manifest: 
+\begin{lstlisting}
+{
+  "name": "Weather",
+  "short_name": "Weather",
+  "icons": [{
+    "src": "/images/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "/images/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "/images/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "/images/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "/images/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }, {
+      "src": "/images/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#3E4EB8",
+  "theme_color": "#2F3BA2"
+}
+
+\\ verlinkung mit dem index.html
+<link rel="manifest" href="/manifest.json">
+\end{lstlisting}
+
+
+\item ios meta tags und icons
+\begin{lstlisting}
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Weather PWA">
+<link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
+\end{lstlisting}
+
+\item description für SEO
+\begin{lstlisting}
+<meta name="description" content="A sample weather app">
+\end{lstlisting}
+
+\item theme-color
+\begin{lstlisting}
+<meta name="theme-color" content="#2F3BA2" />
+\end{lstlisting}
+
+\item Registrierung des Service Workers
+\begin{lstlisting}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => {
+          console.log('Service worker registered.', reg);
+        });
+  });
+}
+\end{lstlisting}
+
+
+\item Array für die Sachen die es zu cachen gilt
+\begin{lstlisting}
+const FILES_TO_CACHE = [
+  '/offline.html',
+];
+\end{lstlisting}
+
+\item Precache the offline page beim install event
+\begin{lstlisting}
+evt.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('[ServiceWorker] Pre-caching offline page');
+      return cache.addAll(FILES_TO_CACHE);
+    })
+);
+\end{lstlisting}
+
+\item lösche alte cache daten beim activate event
+\begin{lstlisting}
+evt.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('[ServiceWorker] Pre-caching offline page');
+      return cache.addAll(FILES_TO_CACHE);
+    })
+);
+\end{lstlisting}
+
+\item fetch event handler
+\begin{lstlisting}
+if (evt.request.mode !== 'navigate') {
+  // Not a page navigation, bail.
+  return;
+}
+evt.respondWith(
+    fetch(evt.request)
+        .catch(() => {
+          return caches.open(CACHE_NAME)
+              .then((cache) => {
+                return cache.match('offline.html');
+              });
+        })
+);
+\end{lstlisting}
+
+\item prüft ob das object im cache liegt und bereit ist um geladen zu werden
+\begin{lstlisting}
+if (!('caches' in window)) {
+  return null;
+}
+const url = `${window.location.origin}/forecast/${coords}`;
+return caches.match(url)
+    .then((response) => {
+      if (response) {
+        return response.json();
+      }
+      return null;
+    })
+    .catch((err) => {
+      console.error('Error getting data from cache', err);
+      return null;
+    });
+\end{lstlisting}
+
+\item call getForecast
+\begin{lstlisting}
+getForecastFromCache(location.geo)
+    .then((forecast) => {
+      renderForecast(card, forecast);
+    });
+\end{lstlisting}
+
+\item app.js
+\begin{lstlisting}
+// If the data on the element is newer, skip the update.
+if (lastUpdated >= data.currently.time) {
+  return;
+}
+\end{lstlisting}
+
+\item service-worker.js Konstanten für den cache
+\begin{lstlisting}
+const CACHE_NAME = 'static-cache-v2';
+const DATA_CACHE_NAME = 'data-cache-v1';
+\end{lstlisting}
+
+\item service-woreker.js Daten die gecached werden sollen
+\begin{lstlisting}
+const FILES_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/scripts/app.js',
+  '/scripts/install.js',
+  '/scripts/luxon-1.11.4.js',
+  '/styles/inline.css',
+  '/images/add.svg',
+  '/images/clear-day.svg',
+  '/images/clear-night.svg',
+  '/images/cloudy.svg',
+  '/images/fog.svg',
+  '/images/hail.svg',
+  '/images/install.svg',
+  '/images/partly-cloudy-day.svg',
+  '/images/partly-cloudy-night.svg',
+  '/images/rain.svg',
+  '/images/refresh.svg',
+  '/images/sleet.svg',
+  '/images/snow.svg',
+  '/images/thunderstorm.svg',
+  '/images/tornado.svg',
+  '/images/wind.svg',
+];
+\end{lstlisting}
+
+\item service-worker.js update fetch handler
+\begin{lstlisting}
+if (evt.request.url.includes('/forecast/')) {
+  console.log('[Service Worker] Fetch (data)', evt.request.url);
+  evt.respondWith(
+      caches.open(DATA_CACHE_NAME).then((cache) => {
+        return fetch(evt.request)
+            .then((response) => {
+              // If the response was good, clone it and store it in the cache.
+              if (response.status === 200) {
+                cache.put(evt.request.url, response.clone());
+              }
+              return response;
+            }).catch((err) => {
+              // Network request failed, try to get it from the cache.
+              return cache.match(evt.request);
+            });
+      }));
+  return;
+}
+evt.respondWith(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.match(evt.request)
+          .then((response) => {
+            return response || fetch(evt.request);
+          });
+    })
+);
+\end{lstlisting}
+
+
+\item install script verlinkung
+\begin{lstlisting}
+<script src="/scripts/install.js"></script>
+\end{lstlisting}
+
+
+\item beforeinstallprompt event
+\begin{lstlisting}
+window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
+\end{lstlisting}
+
+\item installation fehlt noch
+
+\end{enumerate}
+
+
+
+\end{appendix}
+
+
+%###############################################################################
+
+\end{document}
+
+%###############################################################################
