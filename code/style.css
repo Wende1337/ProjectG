@@ -8,3 +8,7 @@
   display: inline-block;
   font-size: 16px;
 }
+.Unigebäude{
+  background-image:url("images/UniBonnGebaeude.jpg");
+  background-color: transparent;
+}
