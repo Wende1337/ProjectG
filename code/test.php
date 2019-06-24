@@ -16,3 +16,6 @@ catch(PDOException $e)
 }
 
 
+
+//close connection
+$conn = null;
