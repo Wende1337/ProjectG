@@ -55,11 +55,11 @@ CREATE TABLE `Uebung_beinhaltet_Aufgabe`
 /*
  * Fremdschlüssel
  */
-ALTER TABLE `Benutzer` ADD FOREIGN KEY (`id_benutzer`) REFERENCES `Benutzer_bearbeitet_Lektion` (`id_benutzer`);
-ALTER TABLE `Lektion` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Benutzer_bearbeitet_Lektion` (`id_lektion`);
-ALTER TABLE `Lektion` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Uebung` (`id_lektion`);
-ALTER TABLE `Uebung` ADD FOREIGN KEY (`id_uebung`) REFERENCES `Uebung_beinhaltet_Aufgabe` (`id_uebung`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Uebung_beinhaltet_Aufgabe` (`id_aufgabe`);
+ALTER TABLE Benutzer_bearbeitet_Lektion ADD FOREIGN KEY (`id_benutzer`) REFERENCES `Benutzer` (`id_benutzer`);
+ALTER TABLE `Benutzer_bearbeitet_Lektion` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
+ALTER TABLE `Uebung` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
+ALTER TABLE `Uebung_beinhaltet_Aufgabe` ADD FOREIGN KEY (`id_uebung`) REFERENCES `Uebung` (`id_uebung`);
+ALTER TABLE `Uebung_beinhaltet_Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 
 
 /*
