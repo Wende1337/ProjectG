@@ -2,12 +2,14 @@
  * Tabellenschema zur Speicherung der Benutzeraktivitäten
  * 1. alles wird gelöscht 2. alle Tabellen werden neu angelegt
  */
-drop table Benutzer;
 drop table Benutzer_bearbeitet_Lektion;
+drop table Benutzer;
 drop table Lektion;
+
+drop table Uebung_beinhaltet_Aufgabe;
 drop table Uebung;
 drop table Aufgabe;
-drop table Uebung_beinhaltet_Aufgabe;
+
 
 CREATE TABLE `Benutzer`
 (
@@ -40,9 +42,9 @@ CREATE TABLE `Uebung`
   `id_lektion` int(8)
 );
 
-CREATE TABLE `Aufgabe`
+CREATE TABLE `Aufgabenbearbeitung`
 (
-  `id_aufgabe` int(8) PRIMARY KEY,
+  `id_aufgabenbearbeitung` int(8) PRIMARY KEY,
   `erreichte_punkte` integer
 );
 
@@ -50,7 +52,7 @@ CREATE TABLE `Uebung_beinhaltet_Aufgabe`
 (
   `id_uebung_beinhaltet_aufgabe` int(8) PRIMARY KEY,
   `id_uebung` int(8),
-  `id_aufgabe` int(8)
+  `id_aufgabenbearbeitung` int(8)
 );
 /*
  * Fremdschlüssel
@@ -59,8 +61,9 @@ ALTER TABLE Benutzer_bearbeitet_Lektion ADD FOREIGN KEY (`id_benutzer`) REFERENC
 ALTER TABLE `Benutzer_bearbeitet_Lektion` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
 ALTER TABLE `Uebung` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
 ALTER TABLE `Uebung_beinhaltet_Aufgabe` ADD FOREIGN KEY (`id_uebung`) REFERENCES `Uebung` (`id_uebung`);
-ALTER TABLE `Uebung_beinhaltet_Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `Uebung_beinhaltet_Aufgabe` ADD FOREIGN KEY (`id_aufgabenbearbeitung`) REFERENCES `Aufgabenbearbeitung` (`id_aufgabenbearbeitung`);
 
+COMMIT;
 
 /*
  * Tabllenschema zur Speicherung der Aufgaben
@@ -279,5 +282,5 @@ ALTER TABLE `E` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe
 ALTER TABLE `E1` ADD FOREIGN KEY (`id_e`) REFERENCES `E` (`id_e`);
 ALTER TABLE `E2` ADD FOREIGN KEY (`id_e`) REFERENCES `E` (`id_e`);
 
-
+commit ;
 
