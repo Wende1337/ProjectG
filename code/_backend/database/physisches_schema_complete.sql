@@ -259,25 +259,25 @@ CREATE TABLE `E2`
 /*
  * Fremdschlüssel
  */
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `A1` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `A2` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `A3` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `B1` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `B2` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `B3` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `C1` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `C2` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `C3` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `C4` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `D1` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `D2` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `D3` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `D4` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `D5` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `D6` (`id_aufgabe`);
-ALTER TABLE `Aufgabe` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `E` (`id_aufgabe`);
-ALTER TABLE `E` ADD FOREIGN KEY (`id_e`) REFERENCES `E1` (`id_e`);
-ALTER TABLE `E` ADD FOREIGN KEY (`id_e`) REFERENCES `E2` (`id_e`);
+ALTER TABLE `A1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `A2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `A3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `B1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `B2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `B3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `C1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `C2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `C3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `C4` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `D1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `D2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `D3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `D4` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `D5` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `D6` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `E` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `E1` ADD FOREIGN KEY (`id_e`) REFERENCES `E` (`id_e`);
+ALTER TABLE `E2` ADD FOREIGN KEY (`id_e`) REFERENCES `E` (`id_e`);
 
 
 
