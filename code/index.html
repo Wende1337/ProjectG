@@ -32,6 +32,7 @@
 <meta name="apple-mobile-web-app-title" content="Weather PWA">
 <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
 
+
   <!-- CODELAB: Add link rel manifest -->
   <!-- CODELAB: Add iOS meta tags and icons -->
   <!-- CODELAB: Add description here -->
@@ -44,13 +45,24 @@
 </head>
 <body>
 
-  <header class="header">
+<div class="loginbox">
+    <img src="avatar">
     <h1>
-      Griechisch App 
+      Login Here
     </h1>
-  </header>
+    <form>
+            <p>Username</p>
+            <input type="text" name="" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="" placeholder="Enter Password">
+            <input type="submit" name="" value="Login">
+            <a href="#">Lost your password?</a><br>
+            <a href="#">Lost your username?</a>
 
-  <main class="main">
+    </form>
+</div>
+
+  <!-- <main class="main">
     <form method="get" action="/anmeldung.php">
         Username: <br>
         <input type="text" name="username"><br>
@@ -59,7 +71,7 @@
         <br>
         <input class="button" type="submit" value="Anmelden">
     </form>
-  </main>
+  </main> -->
   
 
   <!-- CODELAB: Add the install script here -->
