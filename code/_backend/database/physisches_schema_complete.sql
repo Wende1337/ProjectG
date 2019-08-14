@@ -2,14 +2,13 @@
  * Tabellenschema zur Speicherung der Benutzeraktivitäten
  * 1. alles wird gelöscht 2. alle Tabellen werden neu angelegt
  */
-drop table Benutzer_bearbeitet_Lektion;
-drop table Benutzer;
-drop table Lektion;
+drop table Uebung_beinhaltet_Aufgabe cascade ;
+drop table Benutzer_bearbeitet_Lektion cascade;
+drop table Uebung cascade;
 
-drop table Uebung_beinhaltet_Aufgabe;
-drop table Uebung;
-drop table Aufgabe;
-
+drop table Aufgabenbearbeitung cascade;
+drop table Lektion cascade ;
+drop table Benutzer cascade;
 
 CREATE TABLE `Benutzer`
 (
@@ -69,7 +68,7 @@ COMMIT;
  * Tabllenschema zur Speicherung der Aufgaben
  * 1. alles wird gelöscht 2. alle Tabellen werden neu angelegt
  */
-DROP TABLE Aufgabe;
+
 drop table A1;
 drop table A2;
 drop table A3;
@@ -86,9 +85,10 @@ drop table D3;
 drop table D4;
 drop table D5;
 drop table D6;
-drop table E;
 drop table E1;
 drop table E2;
+drop table E;
+DROP TABLE Aufgabe;
 
 CREATE TABLE `Aufgabe`
 (
