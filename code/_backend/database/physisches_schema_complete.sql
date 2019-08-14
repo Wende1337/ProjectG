@@ -1,15 +1,15 @@
 /*
  * Tabellenschema zur Speicherung der Benutzeraktivitäten
  * 1. alles wird gelöscht 2. alle Tabellen werden neu angelegt
+ * 3. Ganz am Schluss werden noch die richtigen charset gesetzt. Wir verwenden utf8mb4(UTF8 im 4 byte format).
  */
-drop table Benutzer_bearbeitet_Lektion;
-drop table Benutzer;
-drop table Lektion;
+drop table Uebung_beinhaltet_Aufgabe cascade ;
+drop table Benutzer_bearbeitet_Lektion cascade;
+drop table Uebung cascade;
 
-drop table Uebung_beinhaltet_Aufgabe;
-drop table Uebung;
-drop table Aufgabe;
-
+drop table Aufgabenbearbeitung cascade;
+drop table Lektion cascade ;
+drop table Benutzer cascade;
 
 CREATE TABLE `Benutzer`
 (
@@ -69,7 +69,7 @@ COMMIT;
  * Tabllenschema zur Speicherung der Aufgaben
  * 1. alles wird gelöscht 2. alle Tabellen werden neu angelegt
  */
-DROP TABLE Aufgabe;
+
 drop table A1;
 drop table A2;
 drop table A3;
@@ -86,9 +86,10 @@ drop table D3;
 drop table D4;
 drop table D5;
 drop table D6;
-drop table E;
 drop table E1;
 drop table E2;
+drop table E;
+DROP TABLE Aufgabe;
 
 CREATE TABLE `Aufgabe`
 (
@@ -284,3 +285,42 @@ ALTER TABLE `E2` ADD FOREIGN KEY (`id_e`) REFERENCES `E` (`id_e`);
 
 commit ;
 
+/*
+ * Dieser Teil des Skript ist dazu da um zu gewährleisten dass die Datenbank und jede Tabelle die richtige uft8 im 4Byte format hat.
+ */
+ALTER DATABASE test_work_greek CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+commit ;
+
+ALTER TABLE A1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE A2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE A3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE Aufgabe CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE B1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE B2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE B3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE C1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE C2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE C3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE C4 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE D1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE D2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE D3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE D4 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE D5 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE D6 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE E1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE E2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE E CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+commit;
+
+SELECT
+  `tables`.`TABLE_NAME`,
+  `collations`.`character_set_name`
+FROM
+  `information_schema`.`TABLES` AS `tables`,
+  `information_schema`.`COLLATION_CHARACTER_SET_APPLICABILITY` AS `collations`
+WHERE
+  `tables`.`table_schema` = DATABASE()
+  AND `collations`.`collation_name` = `tables`.`table_collation`
+;
