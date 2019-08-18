@@ -19,6 +19,15 @@ Skript um den input und output der Datenbank zu regeln
         //Set the PDO error mode to exception if something goes wrong
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "<h1>Connected sucessfully</h1>";
+
+        $stmt = $conn->prepare("select id_aufgabe,lektion,uebungstitel,beschreibung,auswahlmoeglichkeiten,am_reihenfolge_relevanz,loesung,loesung_reihenfolge_relevanz,
+                                            max_punkte,schwierigkeitsgrad,schlagworte from Aufgabe");
+        $stmt->execute();
+
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        foreach( $stmt->fetchAll() as $k=>$v) {
+            echo $v;
+        }
     }
     catch(PDOException $e)
     {
