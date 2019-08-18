@@ -26,7 +26,9 @@ Skript um den input und output der Datenbank zu regeln
 
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         foreach( $stmt->fetchAll() as $k=>$v) {
-            echo $v;
+            foreach ($v as $l=>$lv) {
+                echo $lv;
+            }
         }
     }
     catch(PDOException $e)
