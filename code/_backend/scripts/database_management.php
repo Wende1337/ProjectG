@@ -25,8 +25,6 @@
         $conn = null;
     }
 
-
-
     //Functions for the db communication as interface
         function getAllA1() {
             global $conn;
@@ -58,3 +56,31 @@
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        function inputAufgabe( $lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                               $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) {
+            global $conn;
+            global $stmt;
+            $stmt = "insert into Aufgabe( lektion, uebungstitel, beschreibung, auswahlmoeglichkeiten, am_reihenfolge_relevanz, 
+                    loesung, loesung_reihenfolge_relevanz, max_punkte, schwierigkeitsgrad, schlagworte) 
+                    VALUES($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte)";
+            $conn->exec($stmt);
+
+        }
+
+        function inputA1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                         $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) {
+
+            inputAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+            echo "<script> window.alert(\"Aufgabe successful inserted\"); </script>";
+        }
+        function inputA2() {
+
+        }
+        function inputA3() {
+
+        }
+

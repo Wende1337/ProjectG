@@ -13,13 +13,13 @@
         text-align: left;
     }
 </style>
+
 </html>
 <body>
 <form method="POST" action="inputmask.php">
-    <input type="radio" name="table" value="a1" > A1
-    <input type="radio" name="table" value="a2" > A2
-    <input type="radio" name="table" value="a3" > A3 <br>
-    <input type="submit" name="request" value="auswählen">
+    <input type="submit" name="table" value="a1" class="radio">
+    <input type="submit" name="table" value="a2" class="radio">
+    <input type="submit" name="table" value="a3" class="radio"> <br>
 </form>
 </body>
 </html>
@@ -29,19 +29,24 @@
 
     $table = $_POST['table'];
 
-    switch ( $table ) {
-        case "a1" :
-            $result = getAllA1();
-            break;
-        case "a2" :
-            $result = getAllA2();
-            break;
-        case "a3" :
-            $result = getAllA3();
-            break;
-        default:
-            $result = getAllA1();
+    if( isset($_POST["table"]) ) {
+        switch ( $table ) {
+            case "a1" :
+                $result = getAllA1();
+                break;
+            case "a2" :
+                $result = getAllA2();
+                break;
+            case "a3" :
+                $result = getAllA3();
+                break;
+            default:
+                $result = getAllA1();
+        }
+    } else {
+        $result = getAllA1();
     }
+
 
     echo "<table id='tab_content'>
                 <tr>
@@ -65,8 +70,31 @@
         }
         echo "</tr>";
     }
+
+    echo "
+        <tr>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+            <td><input type='text' name='id'></td>
+        </tr>
+    ";
     echo "<table>";
+    echo "<input type='submit' name='input' value='Neuen Eintrag einfügen'>";
     //Close the connection
     $conn = null;
 ?>
+<script type="text/javascript">
+    window.onload = function() {
+        [...document.getElementsByClassName("radio")].forEach(y => y.onclick = "location.reload()");
+    }
+</script>
+
 
