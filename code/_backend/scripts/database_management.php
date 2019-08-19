@@ -5,6 +5,18 @@ Skript um den input und output der Datenbank zu regeln
 <html>
     <head>
         <meta charset="UTF-8">
+
+        <style>
+            #tab_content{
+                width: 100%;
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td{
+                padding: 5px;
+                text-align: left;
+            }
+        </style>
     </head>
 </html>
 <?php
@@ -29,11 +41,25 @@ Skript um den input und output der Datenbank zu regeln
         $stmt->execute();
 
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        echo "<table id='tab_content'>";
+        echo "<table id='tab_content'>
+                <tr>
+                    <th> id </th>
+                    <th> lektion </th>
+                    <th> uebungstitel </th>
+                    <th> beschreibung</th>
+                    <th> auswahlmoeglichkeiten </th>
+                    <th> am_reihenfolge_relevanz </th>
+                    <th> loesung </th>
+                    <th> loesung_reihenfolge_relevanz </th>
+                    <th> max_punkte </th>
+                    <th> schwierigkeitsgrad </th>
+                    <th> schlagworte </th>
+                </tr>
+         ";
         foreach( $stmt->fetchAll() as $array=>$row) {
             echo "<tr>";
             foreach ($row as $val=>$columnValue) {
-                echo "<th>".$columnValue."</th>";
+                echo "<td>".$columnValue."</td>";
             }
             echo "</tr>";
         }
