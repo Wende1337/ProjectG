@@ -26,6 +26,18 @@
 <?php
     require 'database_management.php';
 
+    if( isset($_POST['delete']) ) {
+        deleteA1( $_POST['deleteVal'] );
+    }
+
+    if ( isset($_POST['input']) ) {
+        insertA1($_POST['lektion'], "'".$_POST['uebungstitel']."'", "'".$_POST['beschreibung']."'", "'".$_POST['auswahlmoeglichkeiten']."'",
+            $_POST['am_reihenfolge_relevanz'] ,
+             "'".$_POST['loesung']."'",
+            $_POST['loesung_reihenfolge_relevanz'] ,
+            $_POST['max_punkte'], $_POST['schwierigkeitsgrad'], "'".$_POST['schlagworte']."'");
+    }
+
     $table = (isset($_POST['table'])) ? $_POST['table'] : "a1";
         switch ($table) {
             case "a1" :
@@ -41,13 +53,9 @@
                 $result = getAllA1();
         }
 
-    if ( isset($_POST['input']) ) {
-        insertA1($_POST['lektion'], "'".$_POST['uebungstitel']."'", "'".$_POST['beschreibung']."'", "'".$_POST['auswahlmoeglichkeiten']."'",
-            $_POST['am_reihenfolge_relevanz'] ,
-        "'".$_POST['loesung']."'",
-            $_POST['loesung_reihenfolge_relevanz'] ,
-            $_POST['max_punkte'], $_POST['schwierigkeitsgrad'], "'".$_POST['schlagworte']."'");
-    }
+
+
+
 
     echo "<h3>$table</h3>";
     echo "<table id='tab_content'>
@@ -96,7 +104,10 @@
 ?>
 
 
-    <input type='submit' name='input' value='einfuegen'>
+    <input type='submit' name='input' value='einfuegen'> <br>
+    <br>
+    <input type="text" name="deleteVal">
+    <input type="submit" name="delete" value="Löschen" >
 </form>
 </body>
 </html>

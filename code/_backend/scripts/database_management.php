@@ -26,6 +26,8 @@
     }
 
     //Functions for the db communication as interface
+
+
         function getAllA1() {
             global $conn;
             global $stmt;
@@ -88,3 +90,16 @@
 
         }
 
+        function deleteAufgabe( $id ) {
+            global $conn;
+            $sql = "DELETE FROM Aufgabe WHERE Aufgabe.id_aufgabe = $id";
+            $conn->exec($sql);
+        }
+
+        function deleteA1( $id ) {
+            global $conn;
+            $sql = "DELETE FROM A1 WHERE A1.id_aufgabe = $id";
+            $conn->exec($sql);
+
+            deleteAufgabe( $id );
+        }
