@@ -7,7 +7,7 @@ Skript um den input und output der Datenbank zu regeln
         <meta charset="UTF-8">
 
         <style>
-            #tab_content, #tab_content>th, #tab_content>td{
+            #tab_content, th, td{
                 width: 100%;
                 border: 1px solid black;
                 border-collapse: collapse;
