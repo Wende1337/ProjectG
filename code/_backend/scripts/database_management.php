@@ -19,7 +19,7 @@ Skript um den input und output der Datenbank zu regeln
     try
     {
         //Create Connection object
-        $conn = new PDO("mysql:host=$servername;port=3306;dbname=test_work_greek", $username, $password);
+        $conn = new PDO("mysql:host=$servername;port=3306;dbname=test_work_greek;charset=utf8mb4", $username, $password);
         //Set the PDO error mode to exception if something goes wrong
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "<h1>Connected sucessfully</h1>";
