@@ -1,6 +1,8 @@
-<--
-Skript um den input und output der Datenbank zu regeln
--->
+<?php
+/*
+ * Skript um den input und output der Datenbank zu regeln
+ */
+?>
 
 <html>
     <head>
@@ -72,3 +74,20 @@ Skript um den input und output der Datenbank zu regeln
 
     //Close the connection
     $conn = null;
+
+    //Functions for the db communication as interface
+        function getAllA1() {
+            global $conn;
+            $stmt = $conn->prepare("select id_aufgabe,lektion,uebungstitel,beschreibung,auswahlmoeglichkeiten,am_reihenfolge_relevanz,loesung,loesung_reihenfolge_relevanz,
+                                            max_punkte,schwierigkeitsgrad,schlagworte from Aufgabe");
+            $stmt->execute();
+
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            return $result;
+        }
+        function getAllA2() {
+
+        }
+        function getAllA3() {
+
+        }
