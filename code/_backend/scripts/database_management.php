@@ -29,11 +29,15 @@ Skript um den input und output der Datenbank zu regeln
         $stmt->execute();
 
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        foreach( $stmt->fetchAll() as $k=>$v) {
-            foreach ($v as $l=>$lv) {
-                echo $lv;
+        echo "<table id='tab_content'>";
+        foreach( $stmt->fetchAll() as $array=>$row) {
+            echo "<tr>";
+            foreach ($row as $val=>$columnValue) {
+                echo "<th>".$columnValue."</th>";
             }
+            echo "</tr>";
         }
+        echo "<table>";
     }
     catch(PDOException $e)
     {
