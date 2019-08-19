@@ -57,30 +57,34 @@
             return $result;
         }
 
-        function inputAufgabe( $lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
-                               $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) {
+        function insertAufgabe( $lektion_arg, $uebungstitel_arg, $beschreibung_arg, $auswahlmoeglichkeiten_arg, $am_reihenfolge_relevanz_arg, $loesung_arg,
+                               $loesung_reihenfolge_relevanz_arg, $max_punkte_arg, $schwierigkeitsgrad_arg, $schlagworte_arg) {
             global $conn;
-            global $stmt;
-            $stmt = "insert into Aufgabe( lektion, uebungstitel, beschreibung, auswahlmoeglichkeiten, am_reihenfolge_relevanz, 
+            $sql = "insert into Aufgabe( lektion, uebungstitel, beschreibung, auswahlmoeglichkeiten, am_reihenfolge_relevanz, 
                     loesung, loesung_reihenfolge_relevanz, max_punkte, schwierigkeitsgrad, schlagworte) 
-                    VALUES($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
-                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte)";
-            $conn->exec($stmt);
+                    VALUES($lektion_arg, $uebungstitel_arg, $beschreibung_arg, $auswahlmoeglichkeiten_arg, $am_reihenfolge_relevanz_arg, $loesung_arg,
+                    $loesung_reihenfolge_relevanz_arg, $max_punkte_arg, $schwierigkeitsgrad_arg, $schlagworte_arg)";
+
+            $conn->exec($sql);
 
         }
 
-        function inputA1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+        function insertA1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                          $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) {
+            global $conn;
 
-            inputAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+            insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                 $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
 
-            echo "<script> window.alert(\"Aufgabe successful inserted\"); </script>";
+            $sql = "insert into A1 (id_aufgabe) (select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1)";
+            $conn->exec($sql);
+
+            echo "Aufgabe erfolgreich eingefügt";
         }
-        function inputA2() {
+        function insertA2() {
 
         }
-        function inputA3() {
+        function insertA3() {
 
         }
 

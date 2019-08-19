@@ -21,16 +21,13 @@
     <input type="submit" name="table" value="a2" class="radio">
     <input type="submit" name="table" value="a3" class="radio"> <br>
 </form>
-</body>
-</html>
+
 
 <?php
     require 'database_management.php';
 
-    $table = $_POST['table'];
-
-    if( isset($_POST["table"]) ) {
-        switch ( $table ) {
+    $table = (isset($_POST['table'])) ? $_POST['table'] : "a1";
+        switch ($table) {
             case "a1" :
                 $result = getAllA1();
                 break;
@@ -43,11 +40,16 @@
             default:
                 $result = getAllA1();
         }
-    } else {
-        $result = getAllA1();
+
+    if ( isset($_POST['input']) ) {
+        insertA1($_POST['lektion'], "'".$_POST['uebungstitel']."'", "'".$_POST['beschreibung']."'", "'".$_POST['auswahlmoeglichkeiten']."'",
+            $_POST['am_reihenfolge_relevanz'] ,
+        "'".$_POST['loesung']."'",
+            $_POST['loesung_reihenfolge_relevanz'] ,
+            $_POST['max_punkte'], $_POST['schwierigkeitsgrad'], "'".$_POST['schlagworte']."'");
     }
 
-
+    echo "<h3>$table</h3>";
     echo "<table id='tab_content'>
                 <tr>
                     <th> id </th>
@@ -72,29 +74,29 @@
     }
 
     echo "
+    <form method=\"POST\" action=\"inputmask.php\">
         <tr>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
-            <td><input type='text' name='id'></td>
+            <td></td>
+            <td><input type='text' name='lektion'></td>
+            <td><input type='text' name='uebungstitel'></td>
+            <td><input type='text' name='beschreibung'></td>
+            <td><input type='text' name='auswahlmoeglichkeiten'></td>
+            <td><input type='text' name='am_reihenfolge_relevanz'></td>
+            <td><input type='text' name='loesung'></td>
+            <td><input type='text' name='loesung_reihenfolge_relevanz'></td>
+            <td><input type='text' name='max_punkte'></td>
+            <td><input type='text' name='schwierigkeitsgrad'></td>
+            <td><input type='text' name='schlagworte'></td>
         </tr>
     ";
     echo "<table>";
-    echo "<input type='submit' name='input' value='Neuen Eintrag einfügen'>";
+
     //Close the connection
     $conn = null;
 ?>
-<script type="text/javascript">
-    window.onload = function() {
-        [...document.getElementsByClassName("radio")].forEach(y => y.onclick = "location.reload()");
-    }
-</script>
 
 
+    <input type='submit' name='input' value='einfuegen'>
+</form>
+</body>
+</html>
