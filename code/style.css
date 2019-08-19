@@ -3,8 +3,8 @@
 	padding:0;
 	background: url(UniBonnGebaeude.jpg);
 	background-size: cover;
-	/*background-position: center;*/
-	font-family: sans-serif;
+	background-position: center;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 button { background-color: #48d1cc;
@@ -165,3 +165,4 @@ h1{
 .loginbox a:hover{
 	color: #ffc107;
 }
+
