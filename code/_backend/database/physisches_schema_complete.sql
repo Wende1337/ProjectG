@@ -13,7 +13,7 @@ drop table Benutzer cascade;
 
 CREATE TABLE `Benutzer`
 (
-  `id_benutzer` int(8) PRIMARY KEY,
+  `id_benutzer` int(8) PRIMARY KEY auto_increment,
   `vorname` varchar(255),
   `name` varchar(255),
   `emailadresse` varchar(255),
@@ -22,14 +22,14 @@ CREATE TABLE `Benutzer`
 
 CREATE TABLE `Benutzer_bearbeitet_Lektion`
 (
-  `id_benutzer_lektion` int(8) PRIMARY KEY,
+  `id_benutzer_lektion` int(8) PRIMARY KEY auto_increment,
   `id_benutzer` int(8),
   `id_lektion` int(8)
 );
 
 CREATE TABLE `Lektion`
 (
-  `id_lektion` int(8) PRIMARY KEY,
+  `id_lektion` int(8) PRIMARY KEY auto_increment,
   `status` ENUM ('abgeschlossen', 'fehlgeschlagen', 'ausstehend'),
   `datum_angefangen` datetime,
   `datum_beendet` datetime
@@ -37,20 +37,20 @@ CREATE TABLE `Lektion`
 
 CREATE TABLE `Uebung`
 (
-  `id_uebung` int(8) PRIMARY KEY,
+  `id_uebung` int(8) PRIMARY KEY auto_increment,
   `thema` varchar(255),
   `id_lektion` int(8)
 );
 
 CREATE TABLE `Aufgabenbearbeitung`
 (
-  `id_aufgabenbearbeitung` int(8) PRIMARY KEY,
+  `id_aufgabenbearbeitung` int(8) PRIMARY KEY auto_increment,
   `erreichte_punkte` integer
 );
 
 CREATE TABLE `Uebung_beinhaltet_Aufgabe`
 (
-  `id_uebung_beinhaltet_aufgabe` int(8) PRIMARY KEY,
+  `id_uebung_beinhaltet_aufgabe` int(8) PRIMARY KEY auto_increment,
   `id_uebung` int(8),
   `id_aufgabenbearbeitung` int(8)
 );
@@ -93,7 +93,7 @@ DROP TABLE Aufgabe;
 
 CREATE TABLE `Aufgabe`
 (
-  `id_aufgabe` int(8) PRIMARY KEY,
+  `id_aufgabe` int(8) PRIMARY KEY auto_increment,
   `lektion` int(8),
   `uebungstitel` varchar(255),
   `beschreibung` varchar(255),
@@ -108,19 +108,19 @@ CREATE TABLE `Aufgabe`
 
 CREATE TABLE `A1`
 (
-  `id_a1` int(8) PRIMARY KEY,
+  `id_a1` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `A2`
 (
-  `id_a2` int(8) PRIMARY KEY,
+  `id_a2` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `A3`
 (
-  `id_a3` int(8) PRIMARY KEY,
+  `id_a3` int(8) PRIMARY KEY auto_increment,
   `loesungsvorgabe` varchar(255),
   `ueberschrift_tabelle1` varchar(255),
   `ueberschrift_tabelle2` varchar(255),
@@ -133,25 +133,25 @@ CREATE TABLE `A3`
 
 CREATE TABLE `B1`
 (
-  `id_b1` int(8) PRIMARY KEY,
+  `id_b1` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `B2`
 (
-  `id_b2` int(8) PRIMARY KEY,
+  `id_b2` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `B3`
 (
-  `id_b3` int(8) PRIMARY KEY,
+  `id_b3` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `C1`
 (
-  `id_c1` int(8) PRIMARY KEY,
+  `id_c1` int(8) PRIMARY KEY auto_increment,
   `loesungsvorgabe_spalte1` varchar(255),
   `loesungsvorgabe_spalte1_reihenfolge` boolean,
   `loesungsvorgabe_spalte2` varchar(255),
@@ -161,7 +161,7 @@ CREATE TABLE `C1`
 
 CREATE TABLE `C2`
 (
-  `id_c2` int(8) PRIMARY KEY,
+  `id_c2` int(8) PRIMARY KEY auto_increment auto_increment auto_increment,
   `tabellenvorgabe_spalte1` varchar(255),
   `tabellenvorgabe_spalte1_reihenfolge` boolean,
   `tabellenvorgabe_spalte2` varchar(255),
@@ -175,7 +175,7 @@ CREATE TABLE `C2`
 
 CREATE TABLE `C3`
 (
-  `id_c3` int(8) PRIMARY KEY,
+  `id_c3` int(8) PRIMARY KEY auto_increment auto_increment,
   `tabellenvorgabe_spalte1` varchar(255),
   `tabellenvorgabe_spalte1_reihenfolge` boolean,
   `tabellenvorgabe_spalte2` varchar(255),
@@ -190,7 +190,7 @@ CREATE TABLE `C3`
 
 CREATE TABLE `C4`
 (
-  `id_c4` int(8) PRIMARY KEY,
+  `id_c4` int(8) PRIMARY KEY auto_increment auto_increment,
   `ueberschrift_tabelle_spalte1` varchar(255),
   `ueberschrift_tabelle_spalte2` varchar(255),
   `loesung_spalte1` varchar(255),
@@ -202,43 +202,43 @@ CREATE TABLE `C4`
 
 CREATE TABLE `D1`
 (
-  `id_d1` int(8) PRIMARY KEY,
+  `id_d1` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `D2`
 (
-  `id_d2` int(8) PRIMARY KEY,
+  `id_d2` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `D3`
 (
-  `id_d3` int(8) PRIMARY KEY,
+  `id_d3` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `D4`
 (
-  `id_d4` int(8) PRIMARY KEY,
+  `id_d4` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `D5`
 (
-  `id_d5` int(8) PRIMARY KEY,
+  `id_d5` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `D6`
 (
-  `id_d6` int(8) PRIMARY KEY,
+  `id_d6` int(8) PRIMARY KEY auto_increment,
   `id_aufgabe` int(8)
 );
 
 CREATE TABLE `E`
 (
-  `id_e` int(8) PRIMARY KEY,
+  `id_e` int(8) PRIMARY KEY auto_increment,
   `loesungspaare` varchar(255),
   `loesungspaare_reihenfolge` boolean,
   `id_aufgabe` int(8)
@@ -246,13 +246,13 @@ CREATE TABLE `E`
 
 CREATE TABLE `E1`
 (
-  `id_e1` int(8) PRIMARY KEY,
+  `id_e1` int(8) PRIMARY KEY auto_increment,
   `id_e` int(8)
 );
 
 CREATE TABLE `E2`
 (
-  `id_e2` int(8) PRIMARY KEY,
+  `id_e2` int(8) PRIMARY KEY auto_increment,
   `auswahlmoeglichkeiten1` varchar(255),
   `auswahlmoeglichkeiten1_reihenfolge` boolean,
   `auswahlmoeglichkeiten2` varchar(255),
