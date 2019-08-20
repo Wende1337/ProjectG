@@ -1,0 +1,7 @@
+- relevanz in ja/nein umwandeln, eingabe und Ausgabe
+- 1. Teil(userstats) der Datenbank überarbeiten
+- Für alle Aufgaben Einfüge und Delete operationen bereitstellen
+- Für alle Aufgaben filter einstellen
+- nochmal drüberschauen und fragen: was kann alles der client machen?(js) und was muss der server machen?(php), und dementsprechend anpassungen durchführen
+- delete funktion so verallgemeinern dass alle einschließlich für Aufgabentyp E alles gelöscht werden kann mit nur einer funktion!
+- insert nochmal nachdenken ob diese nicht auch mit einer Funktion verallgemeinert werden können.

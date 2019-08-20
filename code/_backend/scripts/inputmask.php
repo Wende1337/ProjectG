@@ -27,7 +27,7 @@
     require 'database_management.php';
 
     if( isset($_POST['delete']) ) {
-        deleteA1( $_POST['deleteVal'] );
+        deleteSpecificAufgabe( $_POST['deleteVal'], "A1" );
     }
 
     if ( isset($_POST['input']) ) {
@@ -60,17 +60,17 @@
     echo "<h3>$table</h3>";
     echo "<table id='tab_content'>
                 <tr>
-                    <th> id </th>
-                    <th> lektion </th>
-                    <th> uebungstitel </th>
-                    <th> beschreibung</th>
-                    <th> auswahlmoeglichkeiten </th>
-                    <th> am_reihenfolge_relevanz </th>
-                    <th> loesung </th>
-                    <th> loesung_reihenfolge_relevanz </th>
-                    <th> max_punkte </th>
-                    <th> schwierigkeitsgrad </th>
-                    <th> schlagworte </th>
+                    <th> Nr. </th>
+                    <th> Lektion </th>
+                    <th> Übungstitel </th>
+                    <th> Beschreibung</th>
+                    <th> Auswahlmöglichkeiten </th>
+                    <th> Auswahlmöglichkeiten Reihenfolge relevant? </th>
+                    <th> Loesung </th>
+                    <th> Loesung Reihenfolge relevant? </th>
+                    <th> Punkte </th>
+                    <th> Schwierigkeitsgrad </th>
+                    <th> Schlagworte </th>
                 </tr>
          ";
     foreach( $stmt->fetchAll() as $array=>$row) {
@@ -104,8 +104,9 @@
 ?>
 
 
-    <input type='submit' name='input' value='einfuegen'> <br>
+    <input type='submit' name='input' value='Einfügen'> <br>
     <br>
+    Nr. eingeben: <br>
     <input type="text" name="deleteVal">
     <input type="submit" name="delete" value="Löschen" >
 </form>

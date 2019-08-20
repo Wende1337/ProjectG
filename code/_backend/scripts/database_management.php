@@ -26,8 +26,6 @@
     }
 
     //Functions for the db communication as interface
-
-
         function getAllA1() {
             global $conn;
             global $stmt;
@@ -81,12 +79,32 @@
             $sql = "insert into A1 (id_aufgabe) (select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1)";
             $conn->exec($sql);
 
-            echo "Aufgabe erfolgreich eingefügt";
+            echo "A1 Aufgabe erfolgreich eingefügt";
         }
-        function insertA2() {
+        function insertA2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                          $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) {
+            global $conn;
+
+            insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+            $sql = "insert into A2 (id_aufgabe) (select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1)";
+            $conn->exec($sql);
+
+            echo "A2 Aufgabe erfolgreich eingefügt";
 
         }
-        function insertA3() {
+        function insertA3($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                          $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) {
+            global $conn;
+
+            insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+            $sql = "insert into A3 (id_aufgabe) (select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1)";
+            $conn->exec($sql);
+
+            echo "A3 Aufgabe erfolgreich eingefügt";
 
         }
 
@@ -96,10 +114,11 @@
             $conn->exec($sql);
         }
 
-        function deleteA1( $id ) {
+        function deleteSpecificAufgabe( $id, $type ) {
             global $conn;
-            $sql = "DELETE FROM A1 WHERE A1.id_aufgabe = $id";
+            $sql = "DELETE FROM $type WHERE $type.id_aufgabe = $id";
             $conn->exec($sql);
 
             deleteAufgabe( $id );
+            echo "$type Aufgabe erfolgreich gelöscht";
         }
