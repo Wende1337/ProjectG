@@ -4,4 +4,20 @@
 - Für alle Aufgaben filter einstellen
 - nochmal drüberschauen und fragen: was kann alles der client machen?(js) und was muss der server machen?(php), und dementsprechend anpassungen durchführen
 - delete funktion so verallgemeinern dass alle einschließlich für Aufgabentyp E alles gelöscht werden kann mit nur einer funktion!
-- insert nochmal nachdenken ob diese nicht auch mit einer Funktion verallgemeinert werden können.
+- insert nochmal nachdenken ob diese nicht auch mit einer Funktion verallgemeinert werden können.k
+
+
+20.8  Meeting:
+- pseudonym jeder nutzer
+- anmeldung alias und passwort
+- uni email später eingeben, und nur ein pseudonym zur einer email adresse
+- keine suche sondern schlagwörter vorgeben als dropdown liste und suchergebnis nach lektion filtern können
+- Einstellungen: pw ändern
+- lektion und danach Übungstitel auwählen lassen können von den Benutzern
+- bei auswahlaufgaben rot/grün hinterlegen nur bei dem ausgewählten und auch nur was die User eingeben, aber nicht das richtige noch zusätzlich anzeigen lassen
+    - extra button: lösung anzeigen, beim ergebnisscreen, wenn der Button gedrückt wurde keine Punktzahl für die Aufgabe
+-
+
+
+- mitte September 15.09
+- Mittwoch 4.09
