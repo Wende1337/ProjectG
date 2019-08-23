@@ -288,7 +288,7 @@ commit ;
 /*
  * Dieser Teil des Skript ist dazu da, um zu gewährleisten dass die Datenbank und jede Tabelle die richtige uft8 im 4Byte format hat.
  */
-ALTER DATABASE test_work_greek CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+ALTER DATABASE projectG_db CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 commit ;
 
 ALTER TABLE A1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
