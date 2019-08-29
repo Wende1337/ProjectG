@@ -1,5 +1,5 @@
 - relevanz in ja/nein umwandeln, eingabe und Ausgabe
-- 1. Teil(userstats) der Datenbank überarbeiten
+- 1. Teil(userstats) der Datenbank überarbeiten +
 - Für alle Aufgaben Einfüge und Delete operationen bereitstellen
 - Für alle Aufgaben filter einstellen
 - nochmal drüberschauen und fragen: was kann alles der client machen?(js) und was muss der server machen?(php), und dementsprechend anpassungen durchführen

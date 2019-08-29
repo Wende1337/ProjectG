@@ -53,10 +53,6 @@
                 $result = getAllA1();
         }
 
-
-
-
-
     echo "<h3>$table</h3>";
     echo "<table id='tab_content'>
                 <tr>
@@ -76,7 +72,7 @@
     foreach( $stmt->fetchAll() as $array=>$row) {
         echo "<tr>";
         foreach ($row as $val=>$columnValue) {
-            echo "<td>".$columnValue."</td>";
+              echo "<td>".$columnValue."</td>";
         }
         echo "</tr>";
     }

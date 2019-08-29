@@ -336,3 +336,8 @@ WHERE
   `tables`.`table_schema` = DATABASE()
   AND `collations`.`collation_name` = `tables`.`table_collation`
 ;
+
+
+insert into A3 (id_aufgabe,loesungsvorgabe,ueberschrift_tabelle1,ueberschrift_tabelle2,ueberschrift_tabelle3,
+            auswahlmoeglichkeiten1,auswahlmoeglichkeiten2, auswahlmoeglichkeiten3)
+            VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1), 'est', 'sda','ewqe12','dsad','dasd','dsad','ewqe');
