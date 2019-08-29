@@ -3,7 +3,7 @@
  * 1. alles wird gelöscht 2. alle Tabellen werden neu angelegt
  * 3. Ganz am Schluss werden noch die richtigen charset gesetzt. Wir verwenden utf8mb4(UTF8 im 4 byte format).
  */
-drop table Uebung_beinhaltet_Aufgabe cascade ;
+drop table Uebung_beinhaltet_Aufgabenbearbeitung cascade ;
 drop table Benutzer_bearbeitet_Lektion cascade;
 drop table Uebung cascade;
 
@@ -13,23 +13,22 @@ drop table Benutzer cascade;
 
 CREATE TABLE `Benutzer`
 (
-  `id_benutzer` int(8) PRIMARY KEY auto_increment,
-  `vorname` varchar(255),
-  `name` varchar(255),
+  `id_benutzer` int(8) PRIMARY KEY,
+  `alias` varchar(255),
   `emailadresse` varchar(255),
   `passwort` varchar(255)
 );
 
 CREATE TABLE `Benutzer_bearbeitet_Lektion`
 (
-  `id_benutzer_lektion` int(8) PRIMARY KEY auto_increment,
+  `id_benutzer_lektion` int(8) PRIMARY KEY,
   `id_benutzer` int(8),
   `id_lektion` int(8)
 );
 
 CREATE TABLE `Lektion`
 (
-  `id_lektion` int(8) PRIMARY KEY auto_increment,
+  `id_lektion` int(8) PRIMARY KEY,
   `status` ENUM ('abgeschlossen', 'fehlgeschlagen', 'ausstehend'),
   `datum_angefangen` datetime,
   `datum_beendet` datetime
@@ -37,31 +36,35 @@ CREATE TABLE `Lektion`
 
 CREATE TABLE `Uebung`
 (
-  `id_uebung` int(8) PRIMARY KEY auto_increment,
+  `id_uebung` int(8) PRIMARY KEY,
   `thema` varchar(255),
+  `uebungstitel` varchar(255),
   `id_lektion` int(8)
 );
 
 CREATE TABLE `Aufgabenbearbeitung`
 (
-  `id_aufgabenbearbeitung` int(8) PRIMARY KEY auto_increment,
-  `erreichte_punkte` integer
+  `id_Aufgabenbearbeitung` int(8) PRIMARY KEY,
+  `erreichte_punkte` integer,
+  `id_aufgabe` int(8)
 );
 
-CREATE TABLE `Uebung_beinhaltet_Aufgabe`
+CREATE TABLE `Uebung_beinhaltet_Aufgabenbearbeitung`
 (
-  `id_uebung_beinhaltet_aufgabe` int(8) PRIMARY KEY auto_increment,
+  `id_uebung_beinhaltet_aufgabenbearbeitung` int(8) PRIMARY KEY,
   `id_uebung` int(8),
-  `id_aufgabenbearbeitung` int(8)
+  `id_Aufgabenbearbeitung` int(8)
 );
+
 /*
  * Fremdschlüssel
  */
-ALTER TABLE Benutzer_bearbeitet_Lektion ADD FOREIGN KEY (`id_benutzer`) REFERENCES `Benutzer` (`id_benutzer`);
+ALTER TABLE `Benutzer_bearbeitet_Lektion` ADD FOREIGN KEY (`id_benutzer`) REFERENCES `Benutzer` (`id_benutzer`);
 ALTER TABLE `Benutzer_bearbeitet_Lektion` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
 ALTER TABLE `Uebung` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
-ALTER TABLE `Uebung_beinhaltet_Aufgabe` ADD FOREIGN KEY (`id_uebung`) REFERENCES `Uebung` (`id_uebung`);
-ALTER TABLE `Uebung_beinhaltet_Aufgabe` ADD FOREIGN KEY (`id_aufgabenbearbeitung`) REFERENCES `Aufgabenbearbeitung` (`id_aufgabenbearbeitung`);
+ALTER TABLE `Uebung_beinhaltet_Aufgabenbearbeitung` ADD FOREIGN KEY (`id_uebung`) REFERENCES `Uebung` (`id_uebung`);
+ALTER TABLE `Uebung_beinhaltet_Aufgabenbearbeitung` ADD FOREIGN KEY (`id_Aufgabenbearbeitung`) REFERENCES `Aufgabenbearbeitung` (`id_Aufgabenbearbeitung`);
+ALTER TABLE `Aufgabenbearbeitung` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 
 COMMIT;
 
@@ -73,6 +76,7 @@ COMMIT;
 drop table A1;
 drop table A2;
 drop table A3;
+drop table A4;
 drop table B1;
 drop table B2;
 drop table B3;
