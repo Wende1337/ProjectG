@@ -131,6 +131,12 @@ CREATE TABLE `A3`
   `id_aufgabe` int(8)
 );
 
+CREATE TABLE `A4`
+(
+  `id_a4` int(8) PRIMARY KEY auto_increment,
+  `id_aufgabe` int(8)
+);
+
 CREATE TABLE `B1`
 (
   `id_b1` int(8) PRIMARY KEY auto_increment,
@@ -266,6 +272,7 @@ CREATE TABLE `E2`
 ALTER TABLE `A1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `A2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `A3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `A4` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `B1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `B2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `B3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
@@ -294,6 +301,7 @@ commit ;
 ALTER TABLE A1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE A2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE A3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE A4 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE Aufgabe CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE B1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE B2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
