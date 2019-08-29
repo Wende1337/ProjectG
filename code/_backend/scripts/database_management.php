@@ -335,6 +335,57 @@
 
           }
 
+        function insertE($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
+                            $loesungspaare,$loesungspaare_reihenfolge) {
+            global $conn;
+
+            insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                 $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+            $sql = "insert into E (id_aufgabe,loesungspaare,loesungspaare_reihenfolge)
+                ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1),$loesungspaare,$loesungspaare_reihenfolge)";
+            $conn->exec($sql);
+
+            echo "E Aufgabe erfolgreich eingefügt";
+
+        }
+
+        function insertE1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
+                                    $loesungspaare,$loesungspaare_reihenfolge, $loesungspaare,$loesungspaare_reihenfolge) {
+            global $conn;
+
+            insertE($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                 $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte, $loesungspaare,$loesungspaare_reihenfolge);
+
+            $sql = "insert into E1 (id_e)
+                (select E.id_e from E ORDER BY id_e DESC LIMIT 1)";
+            $conn->exec($sql);
+
+            echo "E1 Aufgabe erfolgreich eingefügt";
+
+        }
+
+        function insertE2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
+                                            $loesungspaare,$loesungspaare_reihenfolge, $loesungspaare,$loesungspaare_reihenfolge
+                                            $auswahlmoeglichkeiten1,$auswahlmoeglichkeiten1_reihenfolge,$auswahlmoeglichkeiten2,
+                                            $auswahlmoeglichkeiten2_reihenfolge) {
+                    global $conn;
+
+                    insertE($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                         $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte, $loesungspaare,$loesungspaare_reihenfolge);
+
+                    $sql = "insert into E2 (id_e,auswahlmoeglichkeiten1,auswahlmoeglichkeiten1_reihenfolge,auswahlmoeglichkeiten2,auswahlmoeglichkeiten2_reihenfolge)
+                        ((select E.id_e from E ORDER BY id_e DESC LIMIT 1),$auswahlmoeglichkeiten1,$auswahlmoeglichkeiten1_reihenfolge,$auswahlmoeglichkeiten2,
+                        $auswahlmoeglichkeiten2_reihenfolge)";
+                    $conn->exec($sql);
+
+                    echo "E2 Aufgabe erfolgreich eingefügt";
+
+                }
+
         function deleteAufgabe( $id ) {
             global $conn;
             $sql = "DELETE FROM Aufgabe WHERE Aufgabe.id_aufgabe = $id";
