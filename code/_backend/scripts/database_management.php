@@ -167,6 +167,92 @@
              echo "B3 Aufgabe erfolgreich eingefügt";
         }
 
+        function insertC1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte
+                            $loesungsvorgabe_spalte1,$loesungsvorgabe_spalte1_reihenfolge, $loesungsvorgabe_spalte2,$loesungsvorgabe_spalte2_reihenfolge ) {
+            global $conn;
+
+            insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+            $sql = "insert into C1 (id_aufgabe,loesungsvorgabe_spalte1,loesungsvorgabe_spalte1_reihenfolge,
+             loesungsvorgabe_spalte2,loesungsvorgabe_spalte2_reihenfolge)
+             VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1) ,$loesungsvorgabe_spalte1,
+             $loesungsvorgabe_spalte1_reihenfolge, $loesungsvorgabe_spalte2,$loesungsvorgabe_spalte2_reihenfolge)";
+
+            $conn->exec($sql);
+
+            echo "C1 Aufgabe erfolgreich eingefügt";
+        }
+
+        function insertC2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte
+                                    $loesungsvorgabe_spalte1,$loesungsvorgabe_spalte1_reihenfolge, $loesungsvorgabe_spalte2,
+                                    $loesungsvorgabe_spalte2_reihenfolge,$loesung_spalte1,$loesung_spalte1_reihenfolge,$loesung_spalte2,
+                                     $loesung_spalte2_reihenfolge) {
+            global $conn;
+
+            insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+             $sql = "insert into C2 (id_aufgabe,loesungsvorgabe_spalte1,loesungsvorgabe_spalte1_reihenfolge,
+             loesungsvorgabe_spalte2,loesungsvorgabe_spalte2_reihenfolge,loesungsvorgabe_spalte2_reihenfolge,loesung_spalte1,loesung_spalte1_reihenfolge,
+             loesung_spalte2,loesung_spalte2_reihenfolge)
+             VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1) ,$loesungsvorgabe_spalte1,
+             $loesungsvorgabe_spalte1_reihenfolge, $loesungsvorgabe_spalte2,$loesungsvorgabe_spalte2_reihenfolge,$loesung_spalte1,$loesung_spalte1_reihenfolge,
+             $loesung_spalte2,$loesung_spalte2_reihenfolge)";
+
+            $conn->exec($sql);
+
+            echo "C2 Aufgabe erfolgreich eingefügt";
+        }
+
+        function insertC3($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte
+                                    $loesungsvorgabe_spalte1,$loesungsvorgabe_spalte1_reihenfolge, $loesungsvorgabe_spalte2,
+                                    $loesungsvorgabe_spalte2_reihenfolge, $tabellenvorgabe_spalte3, $tabellenvorgabe_spalte3_reihenfolge,
+                                    $loesung1, $loesung2, $loesung3 ) {
+            global $conn;
+
+            insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+            $sql = "insert into C3 (id_aufgabe,loesungsvorgabe_spalte1,loesungsvorgabe_spalte1_reihenfolge,
+             loesungsvorgabe_spalte2,loesungsvorgabe_spalte2_reihenfolge,tabellenvorgabe_spalte3, tabellenvorgabe_spalte3_reihenfolge,
+             loesung1, loesung2, loesung3 )
+             VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1) ,$loesungsvorgabe_spalte1,
+             $loesungsvorgabe_spalte1_reihenfolge, $loesungsvorgabe_spalte2,$loesungsvorgabe_spalte2_reihenfolge,$tabellenvorgabe_spalte3,
+             $tabellenvorgabe_spalte3_reihenfolge,$loesung1, $loesung2, $loesung3)";
+
+            $conn->exec($sql);
+
+            echo "C3 Aufgabe erfolgreich eingefügt";
+                }
+
+         function insertC4($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                                     $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte
+                                     $ueberschrift_tabelle_spalte1,$ueberschrift_tabelle_spalte2,$loesung_spalte1,
+                                     $loesung_spalte1_reihenfolge, $loesung_spalte2, $loesung_spalte2_reihenfolge
+                                      ) {
+            global $conn;
+
+            insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+            $sql = "insert into C4 (id_aufgabe,loesungsvorgabe_spalte1,loesungsvorgabe_spalte1_reihenfolge,
+             loesungsvorgabe_spalte2,loesungsvorgabe_spalte2_reihenfolge,
+             ueberschrift_tabelle_spalte1,ueberschrift_tabelle_spalte2,loesung_spalte1,loesung_spalte1_reihenfolge,
+             loesung_spalte2, loesung_spalte2_reihenfolge)
+             VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1) ,$ueberschrift_tabelle_spalte1,
+             $ueberschrift_tabelle_spalte2,$loesung_spalte1,$loesung_spalte1_reihenfolge, $loesung_spalte2, $loesung_spalte2_reihenfolge)";
+
+            $conn->exec($sql);
+
+            echo "C4 Aufgabe erfolgreich eingefügt";
+         }
+
+
+
         function deleteAufgabe( $id ) {
             global $conn;
             $sql = "DELETE FROM Aufgabe WHERE Aufgabe.id_aufgabe = $id";
