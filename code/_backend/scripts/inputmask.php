@@ -25,26 +25,98 @@
 <?php
     require 'database_management.php';
 
+
+
     if( isset($_POST['delete']) ) {
         deleteSpecificAufgabe( $_POST['deleteVal'], "A1" );
     }
     $table = (isset($_POST['table'])) ? $_POST['table'] : "a1";
 
     if ( isset($_POST['input']) ) {
-        switch ($table) {
+        $table_d = (isset($_POST['table_destination'])) ? $_POST['table_destination'] : "";
+
+        //Beginning of variable definiton section
+        $lektion_p= ((isset($_POST['lektion'])) ? $_POST['lektion'] : "");
+        $uebungstitel_p = "'".((isset($_POST['uebungstitel'])) ? $_POST['uebungstitel'] : "")."'";
+        $beschreibung_p = "'".((isset($_POST['beschreibung'])) ? $_POST['beschreibung'] : "")."'";
+        $auswahlmoeglichkeiten_p = "'".((isset($_POST['auswahlmoeglichkeiten'])) ? $_POST['auswahlmoeglichkeiten'] : "")."'";
+        $am_reihenfolge_relevanz_p = ((isset($_POST['am_reihenfolge_relevanz'])) ? $_POST['am_reihenfolge_relevanz'] : "");
+        $loesung_p = "'".((isset($_POST['loesung'])) ? $_POST['$loesung']  : "")."'";
+        $loesung_reihenfolge_relevanz_p = ((isset($_POST['loesung_reihenfolge_relevanz'])) ?$_POST['loesung_reihenfolge_relevanz']  : "");
+        $max_punkte_p = ((isset($_POST['max_punkte'])) ? $_POST['max_punkte']  : "");
+        $schwierigkeitsgrad_p = ((isset($_POST['schwierigkeitsgrad'])) ? $_POST['schwierigkeitsgrad'] : "");
+        $schlagworte_p = "'".((isset($_POST['schlagworte'])) ? $_POST['schlagworte'] : "")."'";
+        $loesungsvorgabe_p = "'".((isset($_POST['loesungsvorgabe'])) ? $_POST['loesungsvorgabe'] : "")."'";
+        $ueberschrift_tabelle1_p = "'".((isset($_POST['ueberschrift_tabelle1'])) ? $_POST['ueberschrift_tabelle1'] : "")."'";
+        $ueberschrift_tabelle2_p = "'".((isset($_POST['ueberschrift_tabelle2'])) ? $_POST['ueberschrift_tabelle2'] : "")."'";
+        $ueberschrift_tabelle3_p = "'".((isset($_POST['ueberschrift_tabelle3'])) ? $_POST['ueberschrift_tabelle3'] : "")."'";
+        $auswahlmoeglichkeiten1_p = "'".((isset($_POST['auswahlmoeglichkeiten1'])) ? $_POST['auswahlmoeglichkeiten1'] : "")."'";
+        $auswahlmoeglichkeiten2_p = "'".((isset($_POST['auswahlmoeglichkeiten2'])) ? $_POST['auswahlmoeglichkeiten2'] : "")."'";
+        $auswahlmoeglichkeiten3_p = "'".((isset($_POST['auswahlmoeglichkeiten3'])) ? $_POST['auswahlmoeglichkeiten3'] : "")."'";
+        ///End of variable definiton section
+
+        switch ($table_d) {
             case "a1":
-                insertA1($_POST['lektion'], "'".$_POST['uebungstitel']."'", "'".$_POST['beschreibung']."'", "'".$_POST['auswahlmoeglichkeiten']."'",
-                        $_POST['am_reihenfolge_relevanz'] ,
-                         "'".$_POST['loesung']."'",
-                        $_POST['loesung_reihenfolge_relevanz'] ,
-                        $_POST['max_punkte'], $_POST['schwierigkeitsgrad'], "'".$_POST['schlagworte']."'");
+                insertA1($lektion_p, $uebungstitel_p, $beschreibung_p, $auswahlmoeglichkeiten_p, $am_reihenfolge_relevanz_p, $loesung_p,
+                    $loesung_reihenfolge_relevanz_p, $max_punkte_p, $schwierigkeitsgrad_p, $schlagworte_p);
                  break;
             case "a2":
-                insertA2($_POST['lektion'], "'".$_POST['uebungstitel']."'", "'".$_POST['beschreibung']."'", "'".$_POST['auswahlmoeglichkeiten']."'",
-                                        $_POST['am_reihenfolge_relevanz'] ,
-                                         "'".$_POST['loesung']."'",
-                                        $_POST['loesung_reihenfolge_relevanz'] ,
-                                        $_POST['max_punkte'], $_POST['schwierigkeitsgrad'], "'".$_POST['schlagworte']."'");
+                insertA2($lektion_p, $uebungstitel_p, $beschreibung_p, $auswahlmoeglichkeiten_p, $am_reihenfolge_relevanz_p, $loesung_p,
+                    $loesung_reihenfolge_relevanz_p, $max_punkte_p, $schwierigkeitsgrad_p, $schlagworte_p);
+                break;
+            case "a3":
+                insertA3($lektion_p, $uebungstitel_p, $beschreibung_p, $auswahlmoeglichkeiten_p, $am_reihenfolge_relevanz_p, $loesung_p,
+                    $loesung_reihenfolge_relevanz_p, $max_punkte_p, $schwierigkeitsgrad_p, $schlagworte_p,
+                                          $loesungsvorgabe_p, $ueberschrift_tabelle1_p, $ueberschrift_tabelle2_p, $ueberschrift_tabelle3_p, $auswahlmoeglichkeiten1_p,
+                                          $auswahlmoeglichkeiten2_p, $auswahlmoeglichkeiten3_p);
+                break;
+            case "a4":
+
+                break;
+            case "b1":
+
+                break;
+            case "b2":
+
+                break;
+            case "b3":
+
+                break;
+            case "c1":
+
+                break;
+            case "c2":
+
+                break;
+            case "c3":
+
+                break;
+            case "c4":
+
+                break;
+            case "d1":
+
+                break;
+            case "d2":
+
+                break;
+            case "d3":
+
+                break;
+            case "d4":
+
+                break;
+            case "d5":
+
+                break;
+            case "d6":
+
+                break;
+            case "e1":
+
+                break;
+            case "e2":
+
                 break;
              default:
                 echo "Error no insert possible!";
@@ -107,7 +179,7 @@
         </tr>
     ";
     echo "<table>";
-
+    echo "<input type='hidden' name='table_destination' value='".$table."'>";
     //Close the connection
     $conn = null;
 ?>
@@ -118,6 +190,7 @@
     Nr. eingeben: <br>
     <input type="text" name="deleteVal">
     <input type="submit" name="delete" value="Löschen" >
+
 </form>
 </body>
 </html>
