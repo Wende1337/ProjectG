@@ -59,12 +59,7 @@ CREATE TABLE `Uebung_beinhaltet_Aufgabenbearbeitung`
 /*
  * Fremdschlüssel
  */
-ALTER TABLE `Benutzer_bearbeitet_Lektion` ADD FOREIGN KEY (`id_benutzer`) REFERENCES `Benutzer` (`id_benutzer`);
-ALTER TABLE `Benutzer_bearbeitet_Lektion` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
-ALTER TABLE `Uebung` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
-ALTER TABLE `Uebung_beinhaltet_Aufgabenbearbeitung` ADD FOREIGN KEY (`id_uebung`) REFERENCES `Uebung` (`id_uebung`);
-ALTER TABLE `Uebung_beinhaltet_Aufgabenbearbeitung` ADD FOREIGN KEY (`id_Aufgabenbearbeitung`) REFERENCES `Aufgabenbearbeitung` (`id_Aufgabenbearbeitung`);
-ALTER TABLE `Aufgabenbearbeitung` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+
 
 COMMIT;
 
@@ -273,6 +268,14 @@ CREATE TABLE `E2`
 /*
  * Fremdschlüssel
  */
+ALTER TABLE `Aufgabenbearbeitung` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `Benutzer_bearbeitet_Lektion` ADD FOREIGN KEY (`id_benutzer`) REFERENCES `Benutzer` (`id_benutzer`);
+ALTER TABLE `Benutzer_bearbeitet_Lektion` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
+ALTER TABLE `Uebung` ADD FOREIGN KEY (`id_lektion`) REFERENCES `Lektion` (`id_lektion`);
+ALTER TABLE `Uebung_beinhaltet_Aufgabenbearbeitung` ADD FOREIGN KEY (`id_uebung`) REFERENCES `Uebung` (`id_uebung`);
+ALTER TABLE `Uebung_beinhaltet_Aufgabenbearbeitung` ADD FOREIGN KEY (`id_Aufgabenbearbeitung`) REFERENCES `Aufgabenbearbeitung` (`id_Aufgabenbearbeitung`);
+
+
 ALTER TABLE `A1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `A2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `A3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
