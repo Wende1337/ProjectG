@@ -36,42 +36,43 @@
         $table_d = (isset($_POST['table_destination'])) ? $_POST['table_destination'] : "";
 
         //Beginning of variable definiton section
-        $lektion_p= ((isset($_POST['lektion'])) ? $_POST['lektion'] : "");
-        $uebungstitel_p = "'".((isset($_POST['uebungstitel'])) ? $_POST['uebungstitel'] : "")."'";
-        $beschreibung_p = "'".((isset($_POST['beschreibung'])) ? $_POST['beschreibung'] : "")."'";
-        $auswahlmoeglichkeiten_p = "'".((isset($_POST['auswahlmoeglichkeiten'])) ? $_POST['auswahlmoeglichkeiten'] : "")."'";
-        $am_reihenfolge_relevanz_p = ((isset($_POST['am_reihenfolge_relevanz'])) ? $_POST['am_reihenfolge_relevanz'] : "");
-        $loesung_p = "'".((isset($_POST['loesung'])) ? $_POST['$loesung']  : "")."'";
-        $loesung_reihenfolge_relevanz_p = ((isset($_POST['loesung_reihenfolge_relevanz'])) ?$_POST['loesung_reihenfolge_relevanz']  : "");
-        $max_punkte_p = ((isset($_POST['max_punkte'])) ? $_POST['max_punkte']  : "");
-        $schwierigkeitsgrad_p = ((isset($_POST['schwierigkeitsgrad'])) ? $_POST['schwierigkeitsgrad'] : "");
-        $schlagworte_p = "'".((isset($_POST['schlagworte'])) ? $_POST['schlagworte'] : "")."'";
-        $loesungsvorgabe_p = "'".((isset($_POST['loesungsvorgabe'])) ? $_POST['loesungsvorgabe'] : "")."'";
-        $ueberschrift_tabelle1_p = "'".((isset($_POST['ueberschrift_tabelle1'])) ? $_POST['ueberschrift_tabelle1'] : "")."'";
-        $ueberschrift_tabelle2_p = "'".((isset($_POST['ueberschrift_tabelle2'])) ? $_POST['ueberschrift_tabelle2'] : "")."'";
-        $ueberschrift_tabelle3_p = "'".((isset($_POST['ueberschrift_tabelle3'])) ? $_POST['ueberschrift_tabelle3'] : "")."'";
-        $auswahlmoeglichkeiten1_p = "'".((isset($_POST['auswahlmoeglichkeiten1'])) ? $_POST['auswahlmoeglichkeiten1'] : "")."'";
-        $auswahlmoeglichkeiten2_p = "'".((isset($_POST['auswahlmoeglichkeiten2'])) ? $_POST['auswahlmoeglichkeiten2'] : "")."'";
-        $auswahlmoeglichkeiten3_p = "'".((isset($_POST['auswahlmoeglichkeiten3'])) ? $_POST['auswahlmoeglichkeiten3'] : "")."'";
+        $lektion = ((isset($_POST['lektion'])) ? $_POST['lektion'] : "");
+        $uebungstitel = "'".((isset($_POST['uebungstitel'])) ? $_POST['uebungstitel'] : "")."'";
+        $beschreibung = "'".((isset($_POST['beschreibung'])) ? $_POST['beschreibung'] : "")."'";
+        $auswahlmoeglichkeiten = "'".((isset($_POST['auswahlmoeglichkeiten'])) ? $_POST['auswahlmoeglichkeiten'] : "")."'";
+        $am_reihenfolge_relevanz = ((isset($_POST['am_reihenfolge_relevanz'])) ? $_POST['am_reihenfolge_relevanz'] : "");
+        $loesung = "'".((isset($_POST['loesung'])) ? $_POST['loesung']  : "")."'";
+        $loesung_reihenfolge_relevanz = ((isset($_POST['loesung_reihenfolge_relevanz'])) ?$_POST['loesung_reihenfolge_relevanz']  : "");
+        $max_punkte = ((isset($_POST['max_punkte'])) ? $_POST['max_punkte']  : "");
+        $schwierigkeitsgrad = ((isset($_POST['schwierigkeitsgrad'])) ? $_POST['schwierigkeitsgrad'] : "");
+        $schlagworte = "'".((isset($_POST['schlagworte'])) ? $_POST['schlagworte'] : "")."'";
+        $loesungsvorgabe = "'".((isset($_POST['loesungsvorgabe'])) ? $_POST['loesungsvorgabe'] : "")."'";
+        $ueberschrift_tabelle1 = "'".((isset($_POST['ueberschrift_tabelle1'])) ? $_POST['ueberschrift_tabelle1'] : "")."'";
+        $ueberschrift_tabelle2 = "'".((isset($_POST['ueberschrift_tabelle2'])) ? $_POST['ueberschrift_tabelle2'] : "")."'";
+        $ueberschrift_tabelle3 = "'".((isset($_POST['ueberschrift_tabelle3'])) ? $_POST['ueberschrift_tabelle3'] : "")."'";
+        $auswahlmoeglichkeiten1 = "'".((isset($_POST['auswahlmoeglichkeiten1'])) ? $_POST['auswahlmoeglichkeiten1'] : "")."'";
+        $auswahlmoeglichkeiten2 = "'".((isset($_POST['auswahlmoeglichkeiten2'])) ? $_POST['auswahlmoeglichkeiten2'] : "")."'";
+        $auswahlmoeglichkeiten3 = "'".((isset($_POST['auswahlmoeglichkeiten3'])) ? $_POST['auswahlmoeglichkeiten3'] : "")."'";
         ///End of variable definiton section
 
         switch ($table_d) {
             case "a1":
-                insertA1($lektion_p, $uebungstitel_p, $beschreibung_p, $auswahlmoeglichkeiten_p, $am_reihenfolge_relevanz_p, $loesung_p,
-                    $loesung_reihenfolge_relevanz_p, $max_punkte_p, $schwierigkeitsgrad_p, $schlagworte_p);
+                insertA1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                                          $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
                  break;
             case "a2":
-                insertA2($lektion_p, $uebungstitel_p, $beschreibung_p, $auswahlmoeglichkeiten_p, $am_reihenfolge_relevanz_p, $loesung_p,
-                    $loesung_reihenfolge_relevanz_p, $max_punkte_p, $schwierigkeitsgrad_p, $schlagworte_p);
+                insertA2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                                          $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
                 break;
             case "a3":
-                insertA3($lektion_p, $uebungstitel_p, $beschreibung_p, $auswahlmoeglichkeiten_p, $am_reihenfolge_relevanz_p, $loesung_p,
-                    $loesung_reihenfolge_relevanz_p, $max_punkte_p, $schwierigkeitsgrad_p, $schlagworte_p,
-                                          $loesungsvorgabe_p, $ueberschrift_tabelle1_p, $ueberschrift_tabelle2_p, $ueberschrift_tabelle3_p, $auswahlmoeglichkeiten1_p,
-                                          $auswahlmoeglichkeiten2_p, $auswahlmoeglichkeiten3_p);
+                insertA3($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                                          $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
+                                          $loesungsvorgabe, $ueberschrift_tabelle1, $ueberschrift_tabelle2, $ueberschrift_tabelle3, $auswahlmoeglichkeiten1,
+                                          $auswahlmoeglichkeiten2, $auswahlmoeglichkeiten3) ;
                 break;
             case "a4":
-
+                insertA4($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                                                  $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
                 break;
             case "b1":
 
