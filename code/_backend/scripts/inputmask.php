@@ -20,7 +20,6 @@
     <input type="submit" name="table" value="a1" class="radio">
     <input type="submit" name="table" value="a2" class="radio">
     <input type="submit" name="table" value="a3" class="radio"> <br>
-</form>
 
 
 <?php
@@ -29,16 +28,31 @@
     if( isset($_POST['delete']) ) {
         deleteSpecificAufgabe( $_POST['deleteVal'], "A1" );
     }
+    $table = (isset($_POST['table'])) ? $_POST['table'] : "a1";
 
     if ( isset($_POST['input']) ) {
-        insertA1($_POST['lektion'], "'".$_POST['uebungstitel']."'", "'".$_POST['beschreibung']."'", "'".$_POST['auswahlmoeglichkeiten']."'",
-            $_POST['am_reihenfolge_relevanz'] ,
-             "'".$_POST['loesung']."'",
-            $_POST['loesung_reihenfolge_relevanz'] ,
-            $_POST['max_punkte'], $_POST['schwierigkeitsgrad'], "'".$_POST['schlagworte']."'");
+        switch ($table) {
+            case "a1":
+                insertA1($_POST['lektion'], "'".$_POST['uebungstitel']."'", "'".$_POST['beschreibung']."'", "'".$_POST['auswahlmoeglichkeiten']."'",
+                        $_POST['am_reihenfolge_relevanz'] ,
+                         "'".$_POST['loesung']."'",
+                        $_POST['loesung_reihenfolge_relevanz'] ,
+                        $_POST['max_punkte'], $_POST['schwierigkeitsgrad'], "'".$_POST['schlagworte']."'");
+                 break;
+            case "a2":
+                insertA2($_POST['lektion'], "'".$_POST['uebungstitel']."'", "'".$_POST['beschreibung']."'", "'".$_POST['auswahlmoeglichkeiten']."'",
+                                        $_POST['am_reihenfolge_relevanz'] ,
+                                         "'".$_POST['loesung']."'",
+                                        $_POST['loesung_reihenfolge_relevanz'] ,
+                                        $_POST['max_punkte'], $_POST['schwierigkeitsgrad'], "'".$_POST['schlagworte']."'");
+                break;
+             default:
+                echo "Error no insert possible!";
+                break;
+        }
     }
 
-    $table = (isset($_POST['table'])) ? $_POST['table'] : "a1";
+
         switch ($table) {
             case "a1" :
                 $result = getAllA1();
@@ -78,7 +92,6 @@
     }
 
     echo "
-    <form method=\"POST\" action=\"inputmask.php\">
         <tr>
             <td></td>
             <td><input type='text' name='lektion'></td>

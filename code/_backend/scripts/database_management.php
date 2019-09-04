@@ -26,6 +26,17 @@
     }
 
     //Functions for the db communication as interface
+        //get all data from Type(T) X
+        function getAllTX($type) {
+            global $conn;
+            global $stmt;
+            $stmt = $conn->prepare("select * from Aufgabe inner join ".$type);
+            $stmt->execute();
+
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         function getAllA1() {
             global $conn;
             global $stmt;
@@ -168,7 +179,7 @@
         }
 
         function insertC1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
-                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte
+                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
                             $loesungsvorgabe_spalte1,$loesungsvorgabe_spalte1_reihenfolge, $loesungsvorgabe_spalte2,$loesungsvorgabe_spalte2_reihenfolge ) {
             global $conn;
 
@@ -186,7 +197,7 @@
         }
 
         function insertC2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
-                                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte
+                                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
                                     $loesungsvorgabe_spalte1,$loesungsvorgabe_spalte1_reihenfolge, $loesungsvorgabe_spalte2,
                                     $loesungsvorgabe_spalte2_reihenfolge,$loesung_spalte1,$loesung_spalte1_reihenfolge,$loesung_spalte2,
                                      $loesung_spalte2_reihenfolge) {
@@ -208,7 +219,7 @@
         }
 
         function insertC3($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
-                                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte
+                                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
                                     $loesungsvorgabe_spalte1,$loesungsvorgabe_spalte1_reihenfolge, $loesungsvorgabe_spalte2,
                                     $loesungsvorgabe_spalte2_reihenfolge, $tabellenvorgabe_spalte3, $tabellenvorgabe_spalte3_reihenfolge,
                                     $loesung1, $loesung2, $loesung3 ) {
@@ -230,7 +241,7 @@
                 }
 
          function insertC4($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
-                                     $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte
+                                     $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
                                      $ueberschrift_tabelle_spalte1,$ueberschrift_tabelle_spalte2,$loesung_spalte1,
                                      $loesung_spalte1_reihenfolge, $loesung_spalte2, $loesung_spalte2_reihenfolge
                                       ) {
@@ -353,7 +364,7 @@
 
         function insertE1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                                     $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
-                                    $loesungspaare,$loesungspaare_reihenfolge, $loesungspaare,$loesungspaare_reihenfolge) {
+                                    $loesungspaare,$loesungspaare_reihenfolge) {
             global $conn;
 
             insertE($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
@@ -369,7 +380,7 @@
 
         function insertE2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                                             $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
-                                            $loesungspaare,$loesungspaare_reihenfolge, $loesungspaare,$loesungspaare_reihenfolge
+                                            $loesungspaare,$loesungspaare_reihenfolge,
                                             $auswahlmoeglichkeiten1,$auswahlmoeglichkeiten1_reihenfolge,$auswahlmoeglichkeiten2,
                                             $auswahlmoeglichkeiten2_reihenfolge) {
                     global $conn;
