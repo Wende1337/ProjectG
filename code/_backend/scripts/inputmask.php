@@ -204,7 +204,7 @@
                 $result = getAllA1();
         }
 
-    echo "<h3>$table</h3>";
+    echo "<h3 id='response'>$table</h3>";
     echo "<table id='tab_content'>
                 <tr>
                     <th> Nr. </th>
