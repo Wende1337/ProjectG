@@ -56,7 +56,6 @@ class uploader {
         }).then( response => {
             return response.text();
         }).then( text => {
-            console.log( text );
         });
     }
 
@@ -81,7 +80,6 @@ class uploader {
         }).then( response => {
             return response.text();
         }).then( text => {
-
         });
     }
 
@@ -145,7 +143,6 @@ class uploader {
         }).then( response => {
             return response.text();
         }).then( text => {
-            console.log(text);
         });
     }
 
@@ -163,7 +160,7 @@ up.tables.forEach( table => {
 
         switch( dataStringArray[2] ) {
             case "A1":
-                console.log( dataStringArray );
+
                 up.sendAufgabe( dataStringArray, 'a1' );
                 break;
             case "A2":
@@ -187,6 +184,25 @@ up.tables.forEach( table => {
             case "B4":
                 console.log("Type not implemented yet!");
                 break;
+            case "D1":
+                searchAndAdd(dataStringArray ,'\"', '\\');
+                up.sendAufgabe( dataStringArray, 'd1');
+                break;
+            case "dD2":
+                up.sendAufgabe( dataStringArray, 'd2');
+                break;
+            case "dD3":
+                up.sendAufgabe( dataStringArray, 'd3');
+                break;
+            case "dD4":
+                up.sendAufgabe( dataStringArray, 'd4');
+                break;
+            case "dD5":
+                up.sendAufgabe( dataStringArray, 'd5');
+                break;
+            case "dD6":
+                up.sendAufgabe( dataStringArray, 'd6');
+                break;
             default:
                 console.log("No type found for input");
                 break;
@@ -194,4 +210,26 @@ up.tables.forEach( table => {
     } );
 });
 
+function searchAndAdd( datastringArray, searchVal, addVal ) {
+        let i = 0;
+        datastringArray.forEach( stringVal => {
+            let stringArr = stringVal.split('');
+            for(let x=0;x<stringArr.length;++x) {
+                if(stringArr[x] === searchVal) {
+                    stringArr[x] = addVal + stringArr[x];
+                }
+            }
+            ++i;
+        });
+}
 
+
+function searchAndAddString( dataString, searchVal, addval ) {
+    let pos = dataString.search( searchVal );
+    if( pos !== -1) {
+        let newString = dataString.split('');
+        newString.splice( pos, 0, addVal);
+        newString = newString.join('');
+        
+    }
+}
