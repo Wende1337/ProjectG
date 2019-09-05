@@ -182,7 +182,10 @@ up.tables.forEach( table => {
                 up.sendB2( dataStringArray, 'b2' );
                 break;
             case "B3":
-                console.log("Type not implemented");
+                up.sendAufgabe( dataStringArray, 'b3');
+                break;
+            case "B4":
+                console.log("Type not implemented yet!");
                 break;
             default:
                 console.log("No type found for input");
