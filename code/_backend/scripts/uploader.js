@@ -146,6 +146,9 @@ up.tables.forEach( table => {
             case "A3":
                 up.sendA3( dataStringArray, 'a3');
                 break;
+            case "A4":
+                up.sendAufgabe( dataStringArray, 'a4' );
+                break;
             case "B1":
                 up.sendAufgabe( dataStringArray, 'b1');
                 break;
