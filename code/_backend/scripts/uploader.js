@@ -114,19 +114,16 @@ class uploader {
         form.append('schwierigkeitsgrad', dataStringArray[15]);
         form.append('schlagworte', dataStringArray[16]);
 
-        for (let pair of form.entries()) {
-            console.log(pair[0]+ ',' + pair[1]);
-        }
-
         fetch('inputmask.php', {
             method: 'POST',
             body: form
         }).then( response => {
             return response.text();
         }).then( text => {
-            console.log( text );
         });
     }
+
+
 }
 
 
@@ -148,6 +145,16 @@ up.tables.forEach( table => {
                 break;
             case "A3":
                 up.sendA3( dataStringArray, 'a3');
+                break;
+            case "B1":
+                up.sendAufgabe( dataStringArray, 'b1');
+                break;
+            case "B2":
+                console.log("Type not implemented");
+                break;
+            case "B3":
+                console.log("Type not implemented");
+                break;
             default:
                 console.log("No type found for input");
                 break;
