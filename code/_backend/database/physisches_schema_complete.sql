@@ -145,6 +145,7 @@ CREATE TABLE `B1`
 CREATE TABLE `B2`
 (
   `id_b2` int(8) PRIMARY KEY auto_increment,
+  `loesungsvorgabe` varchar(255),
   `id_aufgabe` int(8)
 );
 
@@ -315,7 +316,6 @@ ALTER TABLE B2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE B3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 ALTER TABLE C3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C4 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE D1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -339,8 +339,3 @@ WHERE
   `tables`.`table_schema` = DATABASE()
   AND `collations`.`collation_name` = `tables`.`table_collation`
 ;
-
-
-insert into A3 (id_aufgabe,loesungsvorgabe,ueberschrift_tabelle1,ueberschrift_tabelle2,ueberschrift_tabelle3,
-            auswahlmoeglichkeiten1,auswahlmoeglichkeiten2, auswahlmoeglichkeiten3)
-            VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1), 'est', 'sda','ewqe12','dsad','dasd','dsad','ewqe');

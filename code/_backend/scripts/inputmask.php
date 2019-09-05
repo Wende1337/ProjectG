@@ -47,7 +47,7 @@
         $max_punkte = ((isset($_POST['max_punkte'])) ? $_POST['max_punkte']  : "");
         $schwierigkeitsgrad = ((isset($_POST['schwierigkeitsgrad'])) ? $_POST['schwierigkeitsgrad'] : "");
         $schlagworte = "'".((isset($_POST['schlagworte'])) ? $_POST['schlagworte'] : "")."'";
-        $loesungsvorgabe = "'".((isset($_POST['loesungsvorgabe'])) ? $_POST['loesungsvorgabe'] : "")."'";
+        $loesungsvorgabe = "'".((isset($_POST['loesungsvorgabe'])) ? $_POST['loesungsvorgabe'] : "")."'"; //for B2 too
         //Variables for the table A3
         $ueberschrift_tabelle1 = "'".((isset($_POST['ueberschrift_tabelle1'])) ? $_POST['ueberschrift_tabelle1'] : "")."'";
         $ueberschrift_tabelle2 = "'".((isset($_POST['ueberschrift_tabelle2'])) ? $_POST['ueberschrift_tabelle2'] : "")."'";
@@ -110,7 +110,7 @@
                                                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
                 break;
             case "b2":
-                insertB2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                insertB2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesungsvorgabe ,$loesung,
                                                                   $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) ;
                 break;
             case "b3":

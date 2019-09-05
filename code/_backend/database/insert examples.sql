@@ -15,3 +15,5 @@ VALUES
 );
 insert into A2(id_aufgabe) VALUES (2);
 
+
+insert into B2 (id_aufgabe,loesungsvorgabe) VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1), 'loesungsvorgabe');

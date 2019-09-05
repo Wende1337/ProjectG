@@ -123,6 +123,32 @@ class uploader {
         });
     }
 
+    sendB2( dataStringArray, tablename ) {
+        let form = this.createForm( tablename );
+
+        form.append('lektion', dataStringArray[0]);
+        form.append('uebungstitel', dataStringArray[1] );
+        form.append('type', dataStringArray[2]);
+        form.append('beschreibung', dataStringArray[3]);
+        form.append('auswahlmoeglichkeiten', dataStringArray[4]);
+        form.append('am_reihenfolge_relevanz', (dataStringArray[5] === "Ja") ? "1" : "0");
+        form.append('loesungsvorgabe', dataStringArray[6]);
+        form.append('loesung', dataStringArray[7]);
+        form.append('loesung_reihenfolge_relevanz', (dataStringArray[8] === "Ja") ? "1" : "0");
+        form.append('max_punkte', dataStringArray[9]);
+        form.append('schwierigkeitsgrad', dataStringArray[10]);
+        form.append('schlagworte', dataStringArray[11]);
+
+        fetch('inputmask.php', {
+            method: 'POST',
+            body: form
+        }).then( response => {
+            return response.text();
+        }).then( text => {
+            console.log(text);
+        });
+    }
+
 
 }
 
@@ -153,7 +179,7 @@ up.tables.forEach( table => {
                 up.sendAufgabe( dataStringArray, 'b1');
                 break;
             case "B2":
-                console.log("Type not implemented");
+                up.sendB2( dataStringArray, 'b2' );
                 break;
             case "B3":
                 console.log("Type not implemented");

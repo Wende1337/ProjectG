@@ -152,14 +152,14 @@
             echo "B1 Aufgabe erfolgreich eingefügt";
         }
 
-        function insertB2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+        function insertB2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesungsvorgabe ,$loesung,
                                                   $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) {
              global $conn;
 
              insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                  $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
 
-             $sql = "insert into B2 (id_aufgabe) (select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1)";
+             $sql = "insert into B2 (id_aufgabe,loesungsvorgabe) VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1), $loesungsvorgabe)";
              $conn->exec($sql);
 
              echo "B2 Aufgabe erfolgreich eingefügt";
