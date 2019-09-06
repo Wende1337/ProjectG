@@ -110,7 +110,7 @@
                                                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
                 break;
             case "b2":
-                insertB2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesungsvorgabe ,$loesung,
+                insertB2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                                                                   $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) ;
                 break;
             case "b3":

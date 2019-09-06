@@ -76,6 +76,7 @@
                     VALUES($lektion_arg, $uebungstitel_arg, $beschreibung_arg, $auswahlmoeglichkeiten_arg, $am_reihenfolge_relevanz_arg, $loesung_arg,
                     $loesung_reihenfolge_relevanz_arg, $max_punkte_arg, $schwierigkeitsgrad_arg, $schlagworte_arg)";
 
+            echo $sql;
             $conn->exec($sql);
 
         }
@@ -265,6 +266,7 @@
          function insertD1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) {
             global $conn;
+            $loesung_reihenfolge_relevanz = 'NULL';
 
             insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                  $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);

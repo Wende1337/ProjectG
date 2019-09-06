@@ -81,7 +81,7 @@ class uploader {
             return response.text();
         }).then( text => {
             if(tablename === 'd1') {
-                console.log(text);
+                //console.log(text);
             }
         });
     }
@@ -149,6 +149,32 @@ class uploader {
         });
     }
 
+    sendD1(dataStringArray, tablename){
+        let form = this.createForm( tablename );
+
+        form.append('lektion', dataStringArray[0]);
+        form.append('uebungstitel', dataStringArray[1] );
+        form.append('type', dataStringArray[2]);
+        form.append('beschreibung', dataStringArray[3]);
+        form.append('auswahlmoeglichkeiten', dataStringArray[4]);
+        form.append('am_reihenfolge_relevanz', (dataStringArray[5] === "Ja") ? "1" : "0");
+        form.append('loesung', dataStringArray[6]);
+        form.append('max_punkte', dataStringArray[7]);
+        form.append('schwierigkeitsgrad', dataStringArray[8]);
+        form.append('schlagworte', dataStringArray[9]);
+
+        fetch('inputmask.php', {
+            method: 'POST',
+            body: form
+        }).then( response => {
+            return response.text();
+        }).then( text => {
+            if(tablename === 'd1') {
+                console.log(text);
+            }
+        });
+    }
+
 
 }
 
@@ -188,7 +214,7 @@ up.tables.forEach( table => {
                 console.log("Type not implemented yet! ");
                 break;
             case "D1":
-                up.sendAufgabe( dataStringArray, 'd1');
+                up.sendD1(dataStringArray, 'd1');
                 break;
             case "dD2":
                 up.sendAufgabe( dataStringArray, 'd2');
@@ -212,29 +238,3 @@ up.tables.forEach( table => {
     } );
 });
 
-function searchAndAdd( datastringArray, searchVal, addVal ) {
-        let i = 0;
-        datastringArray.forEach( stringVal => {
-            let stringArr = stringVal.split('');
-            for(let x=0;x<stringArr.length;++x) {
-                if(stringArr[x] === searchVal) {
-                    //stringArr.splice( x, 0, addVal);
-                    stringArr[x] = addVal + stringArr[x];
-                }
-            }
-            datastringArray[i] = stringArr.join('');
-            ++i;
-        });
-
-}
-
-
-function searchAndAddString( dataString, searchVal, addval ) {
-    let pos = dataString.search( searchVal );
-    if( pos !== -1) {
-        let newString = dataString.split('');
-        newString.splice( pos, 0, addVal);
-        newString = newString.join('');
-        
-    }
-}
