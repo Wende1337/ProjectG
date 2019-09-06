@@ -146,6 +146,7 @@ class uploader {
         }).then( response => {
             return response.text();
         }).then( text => {
+            console.log(text);
         });
     }
 
@@ -188,47 +189,47 @@ up.tables.forEach( table => {
         let dataStringArray = up.getColumnDataArray( row );
 
         switch( dataStringArray[2] ) {
-            case " A1":
+            case "A1":
 
                 up.sendAufgabe( dataStringArray, 'a1' );
                 break;
-            case " A2":
+            case "A2":
                 up.sendAufgabe( dataStringArray, 'a2' );
                 break;
-            case "dA3":
+            case "A3":
                 up.sendA3( dataStringArray, 'a3');
                 break;
-            case "dA4":
+            case "A4":
                 up.sendAufgabe( dataStringArray, 'a4' );
                 break;
-            case "dB1":
+            case "B1":
                 up.sendAufgabe( dataStringArray, 'b1');
                 break;
-            case "dB2":
+            case "B2":
                 up.sendB2( dataStringArray, 'b2' );
                 break;
-            case "dB3":
+            case "B3":
                 up.sendAufgabe( dataStringArray, 'b3');
                 break;
-            case "dB4":
+            case "B4":
                 console.log("Type not implemented yet! ");
                 break;
             case "D1":
                 up.sendD1(dataStringArray, 'd1');
                 break;
-            case "dD2":
+            case "D2":
                 up.sendAufgabe( dataStringArray, 'd2');
                 break;
-            case "dD3":
+            case "D3":
                 up.sendAufgabe( dataStringArray, 'd3');
                 break;
-            case "dD4":
+            case "D4":
                 up.sendAufgabe( dataStringArray, 'd4');
                 break;
-            case "dD5":
+            case "D5":
                 up.sendAufgabe( dataStringArray, 'd5');
                 break;
-            case "dD6":
+            case "D6":
                 up.sendAufgabe( dataStringArray, 'd6');
                 break;
             default:
