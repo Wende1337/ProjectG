@@ -80,12 +80,15 @@ class uploader {
         }).then( response => {
             return response.text();
         }).then( text => {
+            if(tablename === 'd1') {
+                console.log(text);
+            }
         });
     }
 
     createForm( table ) {
         let form = new FormData();
-        //these tow post-attributes are necessary
+        //these tow post-attributes are necessary'
         form.append('input', 'automatic');
         form.append('table_destination', table);
 
@@ -159,33 +162,32 @@ up.tables.forEach( table => {
         let dataStringArray = up.getColumnDataArray( row );
 
         switch( dataStringArray[2] ) {
-            case "A1":
+            case " A1":
 
                 up.sendAufgabe( dataStringArray, 'a1' );
                 break;
-            case "A2":
+            case " A2":
                 up.sendAufgabe( dataStringArray, 'a2' );
                 break;
-            case "A3":
+            case "dA3":
                 up.sendA3( dataStringArray, 'a3');
                 break;
-            case "A4":
+            case "dA4":
                 up.sendAufgabe( dataStringArray, 'a4' );
                 break;
-            case "B1":
+            case "dB1":
                 up.sendAufgabe( dataStringArray, 'b1');
                 break;
-            case "B2":
+            case "dB2":
                 up.sendB2( dataStringArray, 'b2' );
                 break;
-            case "B3":
+            case "dB3":
                 up.sendAufgabe( dataStringArray, 'b3');
                 break;
-            case "B4":
-                console.log("Type not implemented yet!");
+            case "dB4":
+                console.log("Type not implemented yet! ");
                 break;
             case "D1":
-                searchAndAdd(dataStringArray ,'\"', '\\');
                 up.sendAufgabe( dataStringArray, 'd1');
                 break;
             case "dD2":
@@ -216,11 +218,14 @@ function searchAndAdd( datastringArray, searchVal, addVal ) {
             let stringArr = stringVal.split('');
             for(let x=0;x<stringArr.length;++x) {
                 if(stringArr[x] === searchVal) {
+                    //stringArr.splice( x, 0, addVal);
                     stringArr[x] = addVal + stringArr[x];
                 }
             }
+            datastringArray[i] = stringArr.join('');
             ++i;
         });
+
 }
 
 
