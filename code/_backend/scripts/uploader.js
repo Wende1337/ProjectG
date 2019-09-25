@@ -152,15 +152,14 @@ class uploader {
 
     sendB4(dataStringArray, tablename) {
         let form = this.createForm( tablename );
-
         form.append('lektion', dataStringArray[0]);
         form.append('uebungstitel', dataStringArray[1] );
         form.append('type', dataStringArray[2]);
         form.append('beschreibung', dataStringArray[3]);
         form.append('auswahlmoeglichkeiten', dataStringArray[4]);
         form.append('am_reihenfolge_relevanz', (dataStringArray[5] === "Ja") ? "1" : "0");
-        form.append('loesungvorgabe1', dataStringArray[6]);
-        form.append('loesungvorgabe2', dataStringArray[7]);
+        form.append('loesungsvorgabe1', dataStringArray[6]);
+        form.append('loesungsvorgabe2', dataStringArray[7]);
         form.append('loesung', dataStringArray[8]);
         form.append('loesung_reihenfolge_relevanz', (dataStringArray[9] === "Ja") ? "1" : "0");
         form.append('max_punkte', dataStringArray[10]);
