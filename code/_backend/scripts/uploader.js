@@ -179,6 +179,8 @@ class uploader {
         });
     }
 
+
+
     sendD1(dataStringArray, tablename){
         let form = this.createForm( tablename );
 
@@ -205,6 +207,14 @@ class uploader {
         });
     }
 
+    sendE1(dataStringArray, tablename) {
+
+    }
+
+    sendE2(dataStringArray, tablename) {
+
+    }
+
 
 }
 
@@ -213,58 +223,95 @@ let up = new uploader();
 let dataRows = up.getAllRows( up.getNextTable() );
 
 
+
+
 up.tables.forEach( table => {
     up.getAllRows(table).forEach( row => {
-        let dataStringArray = up.getColumnDataArray( row );
+            let dataStringArray = up.getColumnDataArray( row );
 
-        switch( dataStringArray[2] ) {
-            case "A1":
-
-                up.sendAufgabe( dataStringArray, 'a1' );
-                break;
-            case "A2":
-                up.sendAufgabe( dataStringArray, 'a2' );
-                break;
-            case "A3":
-                up.sendA3( dataStringArray, 'a3');
-                break;
-            case "A4":
-                up.sendAufgabe( dataStringArray, 'a4' );
-                break;
-            case "B1":
-                up.sendAufgabe( dataStringArray, 'b1');
-                break;
-            case "B2":
-                up.sendB2( dataStringArray, 'b2' );
-                break;
-            case "B3":
-                up.sendAufgabe( dataStringArray, 'b3');
-                break;
-            case "B4":
-                up.sendB4( dataStringArray, 'b4');
-                break;
-            case "D1":
-                up.sendD1(dataStringArray, 'd1');
-                break;
-            case "D2":
-                up.sendAufgabe( dataStringArray, 'd2');
-                break;
-            case "D3":
-                up.sendAufgabe( dataStringArray, 'd3');
-                break;
-            case "D4":
-                up.sendAufgabe( dataStringArray, 'd4');
-                break;
-            case "D5":
-                up.sendAufgabe( dataStringArray, 'd5');
-                break;
-            case "D6":
-                up.sendAufgabe( dataStringArray, 'd6');
-                break;
-            default:
-                console.log("No type found for input");
-                break;
-        }
+            switch( dataStringArray[2] ) {
+                case "A1":
+                    up.sendAufgabe( dataStringArray, 'a1' );
+                    break;
+                case "A2":
+                    up.sendAufgabe( dataStringArray, 'a2' );
+                    break;
+                case "A3":
+                    up.sendA3( dataStringArray, 'a3');
+                    break;
+                case "A4":
+                    up.sendAufgabe( dataStringArray, 'a4' );
+                    break;
+                case "B1":
+                    up.sendAufgabe( dataStringArray, 'b1');
+                    break;
+                case "B2":
+                    up.sendB2( dataStringArray, 'b2' );
+                    break;
+                case "B3":
+                    up.sendAufgabe( dataStringArray, 'b3');
+                    break;
+                case "B4":
+                    up.sendB4( dataStringArray, 'b4');
+                    break;
+                case "C1":
+                    console.log("Type not implemented for upload");
+                    break;
+                case "C2":
+                    console.log("Type not implemented for upload");
+                    break;
+                case "C3":
+                    console.log("Type not implemented for upload");
+                    break;
+                case "C4":
+                    console.log("Type not implemented for upload");
+                    break;
+                case "C5":
+                    console.log("Type not implemented for upload");
+                    break;
+                case "C6":
+                    console.log("Type not implemented for upload");
+                    break;
+                case "C7":
+                    console.log("Type not implemented for upload");
+                    break;
+                case "D1":
+                    up.sendD1(dataStringArray, 'd1');
+                    break;
+                case "D2":
+                    up.sendAufgabe( dataStringArray, 'd2');
+                    break;
+                case "D3":
+                    up.sendAufgabe( dataStringArray, 'd3');
+                    break;
+                case "D4":
+                    up.sendAufgabe( dataStringArray, 'd4');
+                    break;
+                case "D5":
+                    up.sendAufgabe( dataStringArray, 'd5');
+                    break;
+                case "D6":
+                    up.sendAufgabe( dataStringArray, 'd6');
+                    break;
+                case "E1":
+                    console.log("Type not implemented for upload");
+                    break;
+                case "E2":
+                    console.log("Type not implemented for upload");
+                    break;
+                default:
+                    console.log("No type found for input");
+                    break;
+            }
+            sleep( 50 );
     } );
 });
 
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds){
+            break;
+        }
+    }
+}
