@@ -55,6 +55,10 @@
         $auswahlmoeglichkeiten1 = "'".((isset($_POST['auswahlmoeglichkeiten1'])) ? $_POST['auswahlmoeglichkeiten1'] : "")."'";
         $auswahlmoeglichkeiten2 = "'".((isset($_POST['auswahlmoeglichkeiten2'])) ? $_POST['auswahlmoeglichkeiten2'] : "")."'";
         $auswahlmoeglichkeiten3 = "'".((isset($_POST['auswahlmoeglichkeiten3'])) ? $_POST['auswahlmoeglichkeiten3'] : "")."'";
+
+        //Varaibles for table B4
+        $loesungsvorgabe1 = "'".((isset($_POST['loesungsvorgabe1'])) ? $_POST['loesungsvorgabe1'] : "")."'";
+        $loesungsvorgabe2 = "'".((isset($_POST['loesungsvorgabe2'])) ? $_POST['loesungsvorgabe2'] : "")."'";
         //Variables for the table C1
         $loesungsvorgabe_spalte1 ="'".((isset($_POST['loesungsvorgabe_spalte1'])) ? $_POST['loesungsvorgabe_spalte1'] : "")."'";
         $loesungsvorgabe_spalte1_reihenfolge =((isset($_POST['loesungsvorgabe_spalte1_reihenfolge'])) ? $_POST['loesungsvorgabe_spalte1_reihenfolge'] : "");
@@ -116,6 +120,11 @@
             case "b3":
                 insertB3($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                                                                   $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+                break;
+            case "b4":
+                insertB4($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
+                    $loesungsvorgabe1, $loesungsvorgabe2);
                 break;
             case "c1":
 

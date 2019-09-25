@@ -75,6 +75,7 @@ drop table A4;
 drop table B1;
 drop table B2;
 drop table B3;
+drop table B4;
 drop table C1;
 drop table C2;
 drop table C3;
@@ -152,6 +153,14 @@ CREATE TABLE `B2`
 CREATE TABLE `B3`
 (
   `id_b3` int(8) PRIMARY KEY auto_increment,
+  `id_aufgabe` int(8)
+);
+
+CREATE TABLE `B4`
+(
+  `id_b4` int(8) PRIMARY KEY auto_increment,
+  loesungsvorgabe1 varchar(255),
+  loesungsvorgabe2 varchar(255),
   `id_aufgabe` int(8)
 );
 
@@ -284,6 +293,7 @@ ALTER TABLE `A4` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgab
 ALTER TABLE `B1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `B2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `B3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `B4` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `C1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `C2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `C3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
@@ -314,10 +324,12 @@ ALTER TABLE Aufgabe CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE B1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE B2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE B3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE B4 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C4 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+/* C5 + C7*/
 ALTER TABLE D1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE D2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE D3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

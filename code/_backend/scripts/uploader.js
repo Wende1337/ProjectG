@@ -146,7 +146,36 @@ class uploader {
         }).then( response => {
             return response.text();
         }).then( text => {
-            console.log(text);
+            //console.log(text);
+        });
+    }
+
+    sendB4(dataStringArray, tablename) {
+        let form = this.createForm( tablename );
+
+        form.append('lektion', dataStringArray[0]);
+        form.append('uebungstitel', dataStringArray[1] );
+        form.append('type', dataStringArray[2]);
+        form.append('beschreibung', dataStringArray[3]);
+        form.append('auswahlmoeglichkeiten', dataStringArray[4]);
+        form.append('am_reihenfolge_relevanz', (dataStringArray[5] === "Ja") ? "1" : "0");
+        form.append('loesungvorgabe1', dataStringArray[6]);
+        form.append('loesungvorgabe2', dataStringArray[7]);
+        form.append('loesung', dataStringArray[8]);
+        form.append('loesung_reihenfolge_relevanz', (dataStringArray[9] === "Ja") ? "1" : "0");
+        form.append('max_punkte', dataStringArray[10]);
+        form.append('schwierigkeitsgrad', dataStringArray[11]);
+        form.append('schlagworte', dataStringArray[12]);
+
+        fetch('inputmask.php', {
+            method: 'POST',
+            body: form
+        }).then( response => {
+            return response.text();
+        }).then( text => {
+            if(tablename === 'd1') {
+                console.log(text);
+            }
         });
     }
 
@@ -212,7 +241,7 @@ up.tables.forEach( table => {
                 up.sendAufgabe( dataStringArray, 'b3');
                 break;
             case "B4":
-                console.log("Type not implemented yet! ");
+                up.sendB4( dataStringArray, 'b4');
                 break;
             case "D1":
                 up.sendD1(dataStringArray, 'd1');

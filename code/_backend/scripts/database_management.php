@@ -178,6 +178,21 @@
 
              echo "B3 Aufgabe erfolgreich eingefügt";
         }
+        function insertB4($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
+                            $loesungsvorgabe1, $loesungsvorgabe2) {
+
+            global $conn;
+
+            insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+            $sql = "insert into B4 (id_aufgabe,loesungsvorgabe1,loesungsvorgabe2)  VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1),
+                    $loesungsvorgabe1,$loesungsvorgabe2)";
+            $conn->exec($sql);
+
+            echo "B4 Aufgabe erfolgreich eingefügt";
+        }
 
         function insertC1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                             $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
