@@ -80,6 +80,7 @@ drop table C1;
 drop table C2;
 drop table C3;
 drop table C4;
+drop table C7;
 drop table D1;
 drop table D2;
 drop table D3;
@@ -215,6 +216,23 @@ CREATE TABLE `C4`
   `id_aufgabe` int(8)
 );
 
+CREATE TABLE C7
+(
+    `id_c7` int(8) PRIMARY KEY auto_increment auto_increment,
+
+    `tabellenvorgabe1` varchar(255),
+    `tv1_reihenfolge` boolean,
+    `tabellenvorgabe2` varchar(255),
+    `tv2_reihenfolge` boolean,
+    `tabellenvorgabe3` varchar(255),
+    `tv3_reihenfolge` boolean,
+    `loesung1` varchar(255),
+    `loesung2` varchar(255),
+    `loesung3` varchar(255),
+
+    `id_aufgabe` int(8)
+);
+
 CREATE TABLE `D1`
 (
   `id_d1` int(8) PRIMARY KEY auto_increment,
@@ -298,6 +316,7 @@ ALTER TABLE `C1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgab
 ALTER TABLE `C2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `C3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `C4` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
+ALTER TABLE `C7` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `D1` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `D2` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
 ALTER TABLE `D3` ADD FOREIGN KEY (`id_aufgabe`) REFERENCES `Aufgabe` (`id_aufgabe`);
@@ -329,7 +348,8 @@ ALTER TABLE C1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE C4 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-/* C5 + C7*/
+/* C5 +*/
+ALTER TABLE C7 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE D1 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE D2 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE D3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

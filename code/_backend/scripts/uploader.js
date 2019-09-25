@@ -179,6 +179,39 @@ class uploader {
         });
     }
 
+    sendC7(dataStringArray, tablename) {
+        let form = this.createForm( tablename );
+
+        form.append('lektion', dataStringArray[0]);
+        form.append('uebungstitel', dataStringArray[1] );
+        form.append('type', dataStringArray[2]);
+        form.append('beschreibung', dataStringArray[3]);
+        form.append('tabellenvorgabe1', dataStringArray[4]);
+        form.append('tv1_reihenfolge', (dataStringArray[5] === "Ja") ? "1" : "0");
+        form.append('tabellenvorgabe2', dataStringArray[6]);
+        form.append('tv2_reihenfolge', (dataStringArray[7] === "Ja") ? "1" : "0");
+        form.append('tabellenvorgabe3', dataStringArray[8]);
+        form.append('tv3_reihenfolge', (dataStringArray[9] === "Ja") ? "1" : "0");
+        form.append('loesung1', dataStringArray[10]);
+        form.append('loesung2', dataStringArray[11]);
+        form.append('loesung3', dataStringArray[12]);
+        form.append('auswahlmoeglichkeiten', dataStringArray[13]);
+        form.append('am_reihenfolge_relevanz', (dataStringArray[14] === "Ja") ? "1" : "0");
+        form.append('max_punkte', dataStringArray[15]);
+        form.append('schwierigkeitsgrad', dataStringArray[16]);
+        form.append('schlagworte', dataStringArray[17]);
+        
+        fetch('inputmask.php', {
+            method: 'POST',
+            body: form
+        }).then( response => {
+            return response.text();
+        }).then( text => {
+            if(tablename === 'c7') {
+                console.log(text);
+            }
+        });
+    }
 
 
     sendD1(dataStringArray, tablename){
@@ -258,7 +291,7 @@ class uploader {
             return response.text();
         }).then( text => {
             if(tablename === 'e2') {
-                console.log(text);
+                //console.log(text);
             }
         });
     }
@@ -321,7 +354,7 @@ up.tables.forEach( table => {
                     console.log("Type not implemented for upload");
                     break;
                 case "C7":
-                    console.log("Type not implemented for upload");
+                    up.sendC7(dataStringArray, 'c7');
                     break;
                 case "D1":
                     up.sendD1(dataStringArray, 'd1');

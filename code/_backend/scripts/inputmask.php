@@ -82,6 +82,13 @@
         //Variables for the table C4
         $ueberschrift_tabelle_spalte1 ="'".((isset($_POST['ueberschrift_tabelle_spalte1'])) ? $_POST['ueberschrift_tabelle_spalte1'] : "")."'";
         $ueberschrift_tabelle_spalte2 ="'".((isset($_POST['ueberschrift_tabelle_spalte2'])) ? $_POST['ueberschrift_tabelle_spalte2'] : "")."'";
+        //Variables for C7
+        $tabellenvorgabe1="'".((isset($_POST['tabellenvorgabe1'])) ? $_POST['tabellenvorgabe1'] : "")."'";
+        $tv1_reihenfolge="'".((isset($_POST['tv1_reihenfolge'])) ? $_POST['tv1_reihenfolge'] : "")."'";
+        $tabellenvorgabe2="'".((isset($_POST['tabellenvorgabe2'])) ? $_POST['tabellenvorgabe2'] : "")."'";
+        $tv2_reihenfolge="'".((isset($_POST['tv2_reihenfolge'])) ? $_POST['tv2_reihenfolge'] : "")."'";
+        $tabellenvorgabe3="'".((isset($_POST['tabellenvorgabe3'])) ? $_POST['tabellenvorgabe3'] : "")."'";
+        $tv3_reihenfolge ="'".((isset($_POST['tv3_reihenfolge'])) ? $_POST['tv3_reihenfolge'] : "")."'";
         //Variables for the table E
         $loesungspaare ="'".((isset($_POST['loesungspaare'])) ? $_POST['loesungspaare'] : "")."'";
         $loesungspaare_reihenfolge =((isset($_POST['loesungspaare_reihenfolge'])) ? $_POST['loesungspaare_reihenfolge'] : "");
@@ -154,6 +161,12 @@
                                                      $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
                                                      $ueberschrift_tabelle_spalte1,$ueberschrift_tabelle_spalte2,$loesung_spalte1,
                                                      $loesung_spalte1_reihenfolge, $loesung_spalte2, $loesung_spalte2_reihenfolge);
+                break;
+            case "c7":
+                insertC7($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, 'NULL',
+                    0, $max_punkte, $schwierigkeitsgrad, $schlagworte,
+                    $tabellenvorgabe1,$tv1_reihenfolge,$tabellenvorgabe2,$tv2_reihenfolge,$tabellenvorgabe3,$tv3_reihenfolge,
+                    $loesung1,$loesung2,$loesung3);
                 break;
             case "d1":
                 insertD1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,

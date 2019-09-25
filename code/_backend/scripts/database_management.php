@@ -278,6 +278,26 @@
             echo "C4 Aufgabe erfolgreich eingefügt";
          }
 
+        function insertC7($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                  $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
+                          $tabellenvorgabe1,$tv1_reihenfolge,$tabellenvorgabe2,$tv2_reihenfolge,$tabellenvorgabe3,$tv3_reihenfolge,
+                          $loesung1,$loesung2,$loesung3
+        ) {
+                global $conn;
+
+                insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
+                    $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
+
+                $sql = "insert into C7 (id_aufgabe,tabellenvorgabe1,tv1_reihenfolge,tabellenvorgabe2,tv2_reihenfolge,tabellenvorgabe3,tv3_reihenfolge,loesung1,loesung2,loesung3)
+                     VALUES ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1) ,$tabellenvorgabe1,$tv1_reihenfolge,
+                     $tabellenvorgabe2,$tv2_reihenfolge,$tabellenvorgabe3,$tv3_reihenfolge,$loesung1,$loesung2,$loesung3)";
+
+                $conn->exec($sql);
+
+                echo "C7 Aufgabe erfolgreich eingefügt";
+        }
+
+
          function insertD1($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte) {
             global $conn;
