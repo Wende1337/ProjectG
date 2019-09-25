@@ -186,8 +186,8 @@
                                                     $loesungspaare,$loesungspaare_reihenfolge);
                 break;
             case "e2":
-                insertE2($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
-                                                            $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte,
+                insertE2($lektion, $uebungstitel, $beschreibung, 'NULL', 0, 'NULL',
+                                                            0, $max_punkte, $schwierigkeitsgrad, $schlagworte,
                                                             $loesungspaare,$loesungspaare_reihenfolge,
                                                             $auswahlmoeglichkeiten1,$auswahlmoeglichkeiten1_reihenfolge,$auswahlmoeglichkeiten2,
                                                             $auswahlmoeglichkeiten2_reihenfolge);

@@ -371,7 +371,7 @@
             insertAufgabe($lektion, $uebungstitel, $beschreibung, $auswahlmoeglichkeiten, $am_reihenfolge_relevanz, $loesung,
                  $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte);
 
-            $sql = "insert into E (id_aufgabe,loesungspaare,loesungspaare_reihenfolge)
+            $sql = "insert into E (id_aufgabe,loesungspaare,loesungspaare_reihenfolge) VALUES
                 ((select Aufgabe.id_aufgabe from Aufgabe ORDER BY id_aufgabe DESC LIMIT 1),$loesungspaare,$loesungspaare_reihenfolge)";
             $conn->exec($sql);
 
@@ -406,7 +406,7 @@
                          $loesung_reihenfolge_relevanz, $max_punkte, $schwierigkeitsgrad, $schlagworte, $loesungspaare,$loesungspaare_reihenfolge);
 
                     $sql = "insert into E2 (id_e,auswahlmoeglichkeiten1,auswahlmoeglichkeiten1_reihenfolge,auswahlmoeglichkeiten2,auswahlmoeglichkeiten2_reihenfolge)
-                        ((select E.id_e from E ORDER BY id_e DESC LIMIT 1),$auswahlmoeglichkeiten1,$auswahlmoeglichkeiten1_reihenfolge,$auswahlmoeglichkeiten2,
+                        VALUES ((select E.id_e from E ORDER BY id_e DESC LIMIT 1),$auswahlmoeglichkeiten1,$auswahlmoeglichkeiten1_reihenfolge,$auswahlmoeglichkeiten2,
                         $auswahlmoeglichkeiten2_reihenfolge)";
                     $conn->exec($sql);
 

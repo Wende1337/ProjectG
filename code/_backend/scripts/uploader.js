@@ -174,7 +174,7 @@ class uploader {
             return response.text();
         }).then( text => {
             if(tablename === 'd1') {
-                console.log(text);
+                //console.log(text);
             }
         });
     }
@@ -202,17 +202,65 @@ class uploader {
             return response.text();
         }).then( text => {
             if(tablename === 'd1') {
-                console.log(text);
+                //console.log(text);
             }
         });
     }
 
     sendE1(dataStringArray, tablename) {
+        let form = this.createForm( tablename );
 
+        form.append('lektion', dataStringArray[0]);
+        form.append('uebungstitel', dataStringArray[1] );
+        form.append('type', dataStringArray[2]);
+        form.append('beschreibung', dataStringArray[3]);
+        form.append('auswahlmoeglichkeiten', dataStringArray[4]);
+        form.append('am_reihenfolge_relevanz', (dataStringArray[5] === "Ja") ? "1" : "0");
+        form.append('loesungspaare', dataStringArray[6]);
+        form.append('loesungspaare_reihenfolge', (dataStringArray[7] === "Ja") ? "1" : "0");
+        form.append('max_punkte', dataStringArray[8]);
+        form.append('schwierigkeitsgrad', dataStringArray[9]);
+        form.append('schlagworte', dataStringArray[10]);
+
+        fetch('inputmask.php', {
+            method: 'POST',
+            body: form
+        }).then( response => {
+            return response.text();
+        }).then( text => {
+            if(tablename === 'd1') {
+                //console.log(text);
+            }
+        });
     }
 
     sendE2(dataStringArray, tablename) {
+        let form = this.createForm( tablename );
 
+        form.append('lektion', dataStringArray[0]);
+        form.append('uebungstitel', dataStringArray[1] );
+        form.append('type', dataStringArray[2]);
+        form.append('beschreibung', dataStringArray[3]);
+        form.append('auswahlmoeglichkeiten1', dataStringArray[4]);
+        form.append('auswahlmoeglichkeiten1_reihenfolge', (dataStringArray[5] === "Ja") ? "1" : "0");
+        form.append('auswahlmoeglichkeiten2', dataStringArray[6]);
+        form.append('auswahlmoeglichkeiten2_reihenfolge', (dataStringArray[7] === "Ja") ? "1" : "0");
+        form.append('loesungspaare', dataStringArray[8]);
+        form.append('loesungspaare_reihenfolge', (dataStringArray[9] === "Ja") ? "1" : "0");
+        form.append('max_punkte', dataStringArray[10]);
+        form.append('schwierigkeitsgrad', dataStringArray[11]);
+        form.append('schlagworte', dataStringArray[12]);
+
+        fetch('inputmask.php', {
+            method: 'POST',
+            body: form
+        }).then( response => {
+            return response.text();
+        }).then( text => {
+            if(tablename === 'e2') {
+                console.log(text);
+            }
+        });
     }
 
 
@@ -297,7 +345,7 @@ up.tables.forEach( table => {
                     console.log("Type not implemented for upload");
                     break;
                 case "E2":
-                    console.log("Type not implemented for upload");
+                    up.sendE2( dataStringArray, 'e2');
                     break;
                 default:
                     console.log("No type found for input");
@@ -306,6 +354,8 @@ up.tables.forEach( table => {
             sleep( 50 );
     } );
 });
+
+console.log("Done!");
 
 function sleep(milliseconds) {
     var start = new Date().getTime();
